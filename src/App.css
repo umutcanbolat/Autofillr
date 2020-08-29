@@ -8,3 +8,7 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+
+.ant-divider {
+  margin: 1rem 0;
+}
