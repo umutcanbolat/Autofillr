@@ -1,5 +1,5 @@
 {
-  "name": "autofill",
+  "name": "autofillr",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,5 +44,10 @@
     "commitizen": {
       "path": "git-cz"
     }
-  }
+  },
+  "description": "Automatically fill forms with consistent data",
+  "main": "index.js",
+  "repository": "https://github.com/umutcanbolat/autofill.git",
+  "author": "umutcanbolat <hello@umutcanbolat.com>",
+  "license": "MIT"
 }

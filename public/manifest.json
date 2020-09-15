@@ -1,16 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "Autofill - Automatically fill forms with consistent data",
-  "description": "Autofill",
+  "name": "Autofillr - Automatically fill forms with consistent data",
+  "description": "Autofillr",
   "version": "0.1.0",
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "Autofill data"
+    "default_title": "Autofillr"
   },
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "16": "Autofillr-16.png",
+    "32": "Autofillr-32.png",
+    "192": "Autofillr-192.png",
+    "512": "Autofillr-512.png"
   },
   "permissions": []
 }
