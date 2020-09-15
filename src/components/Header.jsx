@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
 }
 
 const Title = styled.h1`
-  font-family: "Paytone One", Arial, Helvetica, sans-serif;
+  font-family: 'Paytone One', Arial, Helvetica, sans-serif;
   font-weight: unset !important;
   color: #e95420;
 `;

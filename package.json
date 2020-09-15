@@ -19,10 +19,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:watch": "cra-build-watch",
-    "commit": "git-cz"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "commit": "git-cz",
+    "lint": "eslint --ext .js,.jsx src/",
+    "lint:fix": "eslint --ext .js,.jsx src/ --fix"
   },
   "browserslist": {
     "production": [
@@ -37,9 +36,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.11.5",
     "commitizen": "^4.2.1",
     "cra-build-watch": "^3.2.0",
-    "git-cz": "^4.7.1"
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "git-cz": "^4.7.1",
+    "prettier": "^2.1.1"
   },
   "config": {
     "commitizen": {
