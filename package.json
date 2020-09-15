@@ -44,6 +44,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "git-cz": "^4.7.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
     "prettier": "^2.1.1"
   },
   "config": {
@@ -55,5 +57,13 @@
   "main": "index.js",
   "repository": "https://github.com/umutcanbolat/autofill.git",
   "author": "umutcanbolat <hello@umutcanbolat.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix"
+  }
 }
