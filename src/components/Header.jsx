@@ -1,14 +1,18 @@
 import React from "react";
-import { Typography } from "antd";
-
-const { Title } = Typography;
+import styled from "styled-components";
 
 export default function Header() {
   return (
     <header>
       <div className="container">
-        <Title level={2}>Autofillr</Title>
+        <Title>Autofillr.</Title>
       </div>
     </header>
   );
 }
+
+const Title = styled.h1`
+  font-family: "Paytone One", Arial, Helvetica, sans-serif;
+  font-weight: unset !important;
+  color: #e95420;
+`;
