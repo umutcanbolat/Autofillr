@@ -1,5 +1,15 @@
 module.exports = {
-  extends: ['plugin:react/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'airbnb',
+    'plugin:jest/recommended',
+    'prettier/react',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
+  env: {
+    node: true,
+    browser: true,
+  },
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',

@@ -6,9 +6,9 @@ import 'antd/dist/antd.css';
 import './App.css';
 
 function App() {
-  var randomName = faker.name.findName();
-  var randomEmail = faker.internet.email();
-  var randomCard = faker.helpers.createCard();
+  const randomName = faker.name.findName();
+  const randomEmail = faker.internet.email();
+  const randomCard = faker.helpers.createCard();
   console.log(randomName, randomEmail, randomCard);
   console.log(faker.address);
 
@@ -27,7 +27,8 @@ function App() {
     <>
       <Header />
       <Divider />
-      <Details />
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Details {...sampleData} />
     </>
   );
 }

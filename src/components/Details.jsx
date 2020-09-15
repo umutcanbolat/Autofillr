@@ -1,8 +1,7 @@
 import React from 'react';
 import { Descriptions } from 'antd';
-import { scryRenderedComponentsWithType } from 'react-dom/test-utils';
 
-const Item = Descriptions.Item;
+const { Item } = Descriptions;
 
 export default function Details({
   name,
@@ -14,7 +13,6 @@ export default function Details({
   city,
   phone,
 }) {
-  var a = 'as';
   return (
     <>
       <div className="container">
@@ -25,7 +23,7 @@ export default function Details({
           <Item label={<b>Email</b>}>{email}</Item>
           <Item label={<b>Address</b>}>{address}</Item>
           <Item label={<b>Postal Code</b>}>{postalCode}</Item>
-          <Item label={<b>City</b>}>{scryRenderedComponentsWithType}</Item>
+          <Item label={<b>City</b>}>{city}</Item>
           <Item label={<b>Phone</b>}>{phone}</Item>
         </Descriptions>
       </div>
