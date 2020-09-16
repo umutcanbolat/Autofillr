@@ -39,7 +39,6 @@
     "@babel/eslint-parser": "^7.11.5",
     "commitizen": "^4.2.1",
     "cra-build-watch": "^3.2.0",
-    "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
@@ -57,9 +56,9 @@
       "path": "git-cz"
     }
   },
-  "description": "Automatically fill forms with consistent data",
+  "description": "Automatically fill forms with consistently generated data",
   "main": "index.js",
-  "repository": "https://github.com/umutcanbolat/autofill.git",
+  "repository": "https://github.com/umutcanbolat/autofillr.git",
   "author": "umutcanbolat <hello@umutcanbolat.com>",
   "license": "MIT",
   "husky": {
