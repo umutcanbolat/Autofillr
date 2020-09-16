@@ -1,5 +1,7 @@
 import React from 'react';
 import { Descriptions } from 'antd';
+import { StyledDescriptions } from '../styles';
+import Info from './Info';
 
 const { Item } = Descriptions;
 
@@ -16,16 +18,32 @@ export default function Details({
   return (
     <>
       <div className="container">
-        <Descriptions layout="horizontal">
-          <Item label={<b>Name</b>}>{name}</Item>
-          <Item label={<b>Surname</b>}>{surname}</Item>
-          <Item label={<b>National ID</b>}>{nationalID}</Item>
-          <Item label={<b>Email</b>}>{email}</Item>
-          <Item label={<b>Address</b>}>{address}</Item>
-          <Item label={<b>Postal Code</b>}>{postalCode}</Item>
-          <Item label={<b>City</b>}>{city}</Item>
-          <Item label={<b>Phone</b>}>{phone}</Item>
-        </Descriptions>
+        <StyledDescriptions layout="horizontal">
+          <Item label="Name">
+            <Info text={name} />
+          </Item>
+          <Item label="Surname">
+            <Info text={surname} />
+          </Item>
+          <Item label="National ID">
+            <Info text={nationalID} />
+          </Item>
+          <Item label="Email">
+            <Info text={email} />
+          </Item>
+          <Item label="Address">
+            <Info text={address} />
+          </Item>
+          <Item label="Postal Code">
+            <Info text={postalCode} />
+          </Item>
+          <Item label="City">
+            <Info text={city} />
+          </Item>
+          <Item label="Phone">
+            <Info text={phone} />
+          </Item>
+        </StyledDescriptions>
       </div>
     </>
   );
