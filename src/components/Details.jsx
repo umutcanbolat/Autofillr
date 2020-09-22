@@ -1,49 +1,21 @@
 import React from 'react';
-import { Descriptions } from 'antd';
-import { StyledDescriptions } from '../styles';
-import Info from './Info';
+import { Row, Col } from 'antd';
+import Entry from './Entry';
+import { StyledDetails } from '../styles';
 
-const { Item } = Descriptions;
+export default function Details({ fields }) {
+  const entries = Object.entries(fields).map(([key, value]) => (
+    <Col key={key} className="gutter-row" span={12}>
+      <Entry label={key} value={value} />
+    </Col>
+  ));
 
-export default function Details({
-  name,
-  surname,
-  nationalID,
-  email,
-  address,
-  postalCode,
-  city,
-  phone,
-}) {
   return (
     <>
       <div className="container">
-        <StyledDescriptions layout="horizontal">
-          <Item label="Name">
-            <Info text={name} />
-          </Item>
-          <Item label="Surname">
-            <Info text={surname} />
-          </Item>
-          <Item label="National ID">
-            <Info text={nationalID} />
-          </Item>
-          <Item label="Email">
-            <Info text={email} />
-          </Item>
-          <Item label="Address">
-            <Info text={address} />
-          </Item>
-          <Item label="Postal Code">
-            <Info text={postalCode} />
-          </Item>
-          <Item label="City">
-            <Info text={city} />
-          </Item>
-          <Item label="Phone">
-            <Info text={phone} />
-          </Item>
-        </StyledDescriptions>
+        <StyledDetails>
+          <Row gutter={[16, 24]}>{entries}</Row>
+        </StyledDetails>
       </div>
     </>
   );

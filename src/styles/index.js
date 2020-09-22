@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as StyledDescriptions } from './StyledDescriptions';
+export { default as StyledDetails } from './StyledDetails';
+export { default as StyledEntry } from './StyledEntry';
+export { default as StyledInfo } from './StyledInfo';

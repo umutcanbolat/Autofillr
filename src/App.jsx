@@ -15,7 +15,7 @@ function App() {
   const sampleData = {
     name: 'John',
     surname: 'Doe',
-    nationalID: '940423-4263',
+    nationalId: '940423-4263',
     email: 'john.doe@example.com',
     address: 'Bottna Berghem 71',
     postalCode: '57020',
@@ -27,8 +27,7 @@ function App() {
     <>
       <Header />
       <Divider />
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Details {...sampleData} />
+      <Details fields={sampleData} />
     </>
   );
 }
