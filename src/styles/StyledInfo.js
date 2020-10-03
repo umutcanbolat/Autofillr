@@ -4,7 +4,7 @@ const StyledInfo = styled.div`
   input {
     border: none;
     outline: none;
-    width: 100%;
+    padding: 0.1rem 0;
   }
 
   input:focus {
