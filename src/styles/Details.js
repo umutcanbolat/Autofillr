@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const StyledDetails = styled.div`
+export const Details = styled.div`
   font-family: poppins;
 `;
 
-export default StyledDetails;
+export default Details;

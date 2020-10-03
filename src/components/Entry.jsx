@@ -1,12 +1,12 @@
 import React from 'react';
 import Info from './Info';
-import { StyledEntry } from '../styles';
+import * as Styled from '../styles';
 
 export default function Entry({ label, value }) {
   return (
-    <StyledEntry>
-      <span className="label">{label}</span>
+    <Styled.Entry>
+      <Styled.Label>{label}</Styled.Label>
       <Info text={value} />
-    </StyledEntry>
+    </Styled.Entry>
   );
 }

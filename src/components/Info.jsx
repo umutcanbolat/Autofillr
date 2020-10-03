@@ -1,12 +1,8 @@
 import React from 'react';
-import { StyledInfo } from '../styles';
+import * as Styled from '../styles';
 
 const handleFocus = (event) => event.target.select();
 
 export default function Info({ text }) {
-  return (
-    <StyledInfo>
-      <input type="text" onFocus={handleFocus} defaultValue={text} />
-    </StyledInfo>
-  );
+  return <Styled.Input type="text" onFocus={handleFocus} defaultValue={text} />;
 }

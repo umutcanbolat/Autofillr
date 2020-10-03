@@ -1,18 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import * as Styled from '../styles';
 
 export default function Header() {
   return (
-    <header>
-      <div className="container">
-        <Title>Autofillr.</Title>
-      </div>
-    </header>
+    <div className="container">
+      <header>
+        <Styled.Title>Autofillr.</Styled.Title>
+      </header>
+    </div>
   );
 }
-
-const Title = styled.h1`
-  font-family: 'Paytone One', Arial, Helvetica, sans-serif;
-  font-weight: unset !important;
-  color: #e95420;
-`;

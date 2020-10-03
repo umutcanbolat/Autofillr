@@ -1,3 +1,4 @@
-export { default as StyledDetails } from './StyledDetails';
-export { default as StyledEntry } from './StyledEntry';
-export { default as StyledInfo } from './StyledInfo';
+export * from './Details';
+export * from './Entry';
+export * from './Info';
+export * from './Header';

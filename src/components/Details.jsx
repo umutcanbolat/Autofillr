@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import Entry from './Entry';
-import { StyledDetails } from '../styles';
+import * as Styled from '../styles';
 
 export default function Details({ fields }) {
   const entries = Object.entries(fields).map(([key, value]) => (
@@ -13,9 +13,9 @@ export default function Details({ fields }) {
   return (
     <>
       <div className="container">
-        <StyledDetails>
+        <Styled.Details>
           <Row gutter={[16, 24]}>{entries}</Row>
-        </StyledDetails>
+        </Styled.Details>
       </div>
     </>
   );
