@@ -7,7 +7,7 @@ export const Entry = styled.div`
 
 export const Label = styled.span`
   white-space: nowrap;
-  color: #e95420;
+  color: ${(props) => props.theme.primaryColor};
   font-weight: bold;
 
   /* use lodash to handle camelCase  */

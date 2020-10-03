@@ -1,7 +1,9 @@
 import React from 'react';
 import { Divider } from 'antd';
+import { ThemeProvider } from 'styled-components';
 import faker from 'faker';
 import { Header, Details, ControlPanel } from './components';
+import { Light } from './themes';
 import './App.css';
 
 function App() {
@@ -23,13 +25,13 @@ function App() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={Light}>
       <Header />
       <Divider />
       <Details fields={sampleData} />
       <Divider />
       <ControlPanel />
-    </>
+    </ThemeProvider>
   );
 }
 
