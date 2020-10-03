@@ -1,8 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
 import faker from 'faker';
-import { Header, Details } from './components';
-import 'antd/dist/antd.css';
+import { Header, Details, ControlPanel } from './components';
 import './App.css';
 
 function App() {
@@ -28,6 +27,8 @@ function App() {
       <Header />
       <Divider />
       <Details fields={sampleData} />
+      <Divider />
+      <ControlPanel />
     </>
   );
 }

@@ -1,3 +1,4 @@
+@import '~antd/dist/antd.css';
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -5,6 +6,7 @@ body {
   width: 580px;
   height: 450px;
   padding: 1rem 0;
+  font-family: poppins;
 }
 
 .container {
