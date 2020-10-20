@@ -15,4 +15,18 @@ export const CountryLabel = styled.span`
 
 export const FillButton = styled(Button)`
   margin-left: auto;
+  background: ${(props) => props.theme.primaryColor};
+  border-color: ${(props) => props.theme.primaryColor};
+  &:hover {
+    background: ${(props) => props.theme.primaryLighter};
+    border-color: ${(props) => props.theme.primaryLighter};
+  }
+  &:focus {
+    background: ${(props) => props.theme.primaryLighter};
+    border-color: ${(props) => props.theme.primaryLighter};
+  }
+  &:active {
+    background: ${(props) => props.theme.primaryDarker};
+    border-color: ${(props) => props.theme.primaryDarker};
+  }
 `;
