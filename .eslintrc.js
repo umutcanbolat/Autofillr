@@ -9,6 +9,7 @@ module.exports = {
   env: {
     node: true,
     browser: true,
+    webextensions: true,
   },
   parserOptions: {
     ecmaVersion: 2018,
