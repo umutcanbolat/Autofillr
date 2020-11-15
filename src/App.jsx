@@ -14,8 +14,8 @@ const formReducer = (state, formData) => {
 };
 
 const sampleData = {
-  name: 'John',
-  surname: 'Doe',
+  firstName: 'John',
+  familyName: 'Doe',
   nationalId: '940423-4263',
   email: 'john.doe@example.com',
   address: 'Bottna Berghem 71',
@@ -32,7 +32,7 @@ function App() {
       <Divider />
       <Details fields={formData} onChange={setFormData} />
       <Divider />
-      <ControlPanel />
+      <ControlPanel fields={formData} onChange={setFormData} />
     </ThemeProvider>
   );
 }

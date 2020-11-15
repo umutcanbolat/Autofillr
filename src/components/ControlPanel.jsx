@@ -4,20 +4,15 @@ import * as Styled from '../styles';
 
 const { Option } = Select;
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`);
-};
-
-const handleSubmit = () => {
-  console.log(`submitted`);
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { greeting: 'hello' }, function (response) {
-      console.log(response.farewell);
+const handleSubmit = (fields) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, fields, (response) => {
+      console.log(response);
     });
   });
 };
 
-export default function ControlPanel() {
+export default function ControlPanel({ fields, onChange }) {
   return (
     <div className="container">
       <Styled.ControlPanel>
@@ -26,12 +21,19 @@ export default function ControlPanel() {
           defaultValue="sw"
           style={{ width: 'fit-content' }}
           size="small"
-          onChange={handleChange}
+          onChange={() => {
+            onChange();
+          }}
         >
           <Option value="sw">Sweeden</Option>
           <Option value="de">Germany</Option>
         </Select>
-        <Styled.FillButton type="primary" onClick={handleSubmit}>
+        <Styled.FillButton
+          type="primary"
+          onClick={() => {
+            handleSubmit(fields);
+          }}
+        >
           Fill now!
         </Styled.FillButton>
       </Styled.ControlPanel>
