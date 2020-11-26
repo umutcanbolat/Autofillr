@@ -1,7 +1,7 @@
 const ids = {
   firstName: ['given_name'],
   familyName: ['family_name'],
-  nationalId: ['national_identification_number'],
+  nationalId: ['national_identification_number', 'nin'],
   email: ['email'],
   address: ['street_address'],
   postalCode: ['postal_code'],

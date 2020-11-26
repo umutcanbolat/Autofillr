@@ -1,5 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
+import { generateNew } from '../utils/dataGenerator';
 import * as Styled from '../styles';
 
 const { Option } = Select;
@@ -32,6 +33,7 @@ export default function ControlPanel({ fields, onChange }) {
           type="primary"
           onClick={() => {
             handleSubmit(fields);
+            onChange(generateNew());
           }}
         >
           Fill now!

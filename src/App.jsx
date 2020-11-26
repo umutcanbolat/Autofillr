@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import { Divider } from 'antd';
 import { ThemeProvider } from 'styled-components';
-// import faker from 'faker';
+import { generateNew } from './utils/dataGenerator';
 import { Header, Details, ControlPanel } from './components';
 import { Light } from './themes';
 import './App.css';
@@ -13,16 +13,7 @@ const formReducer = (state, formData) => {
   };
 };
 
-const sampleData = {
-  firstName: 'John',
-  familyName: 'Doe',
-  nationalId: '940423-4263',
-  email: 'john.doe@example.com',
-  address: 'Bottna Berghem 71',
-  postalCode: '57020',
-  city: 'Stockholm',
-  phone: '0380-7709280',
-};
+const sampleData = generateNew();
 
 function App() {
   const [formData, setFormData] = useReducer(formReducer, sampleData);

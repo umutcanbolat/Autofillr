@@ -8987,6 +8987,11 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
+personal-number-generator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/personal-number-generator/-/personal-number-generator-1.0.0.tgz#f9ec8bc09841143d67416eabc41dd5641014adbe"
+  integrity sha512-teA4qLOEy+vF0LoYsGeVrkkj3T0yigEvQKNmy4ghCmEQNgxjv1R1zPrz0PdRCd4xNcHNU9AUyx5hqA6bcj6Utw==
+
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
