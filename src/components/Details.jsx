@@ -4,13 +4,13 @@ import Entry from './Entry';
 import * as Styled from '../styles';
 
 export default function Details({ fields, onChange }) {
-  const entries = Object.entries(fields).map(([key, value]) => (
-    <Col key={key} span={12}>
+  const entries = Object.entries(fields).map(([fieldKey, fieldProps]) => (
+    <Col key={fieldKey} span={12}>
       <Entry
-        label={key}
-        value={value}
-        onChange={(val) => {
-          onChange({ [key]: val });
+        label={fieldProps.title}
+        value={fieldProps.value}
+        onChange={(value) => {
+          onChange({ [fieldKey]: { ...fieldProps, value } });
         }}
       />
     </Col>

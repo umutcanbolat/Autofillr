@@ -1,23 +1,16 @@
-import faker from 'faker';
-import generatePno from 'personal-number-generator';
+import { se, de } from '../conf';
 
 const generate = () => {};
 
-export const generateNew = () => {
-  const firstName = faker.name.firstName();
-  const familyName = faker.name.lastName();
-  const email = `${firstName}.${familyName}@gmail.com`.toLowerCase();
-
-  return {
-    firstName,
-    familyName,
-    nationalId: generatePno(),
-    email,
-    address: 'Centrumvägen 33',
-    postalCode: '952 33',
-    city: 'Kalix',
-    phone: '+468123456',
-  };
+export const generateNew = (country) => {
+  switch (country) {
+    case 'se':
+      return se();
+    case 'de':
+      return de();
+    default:
+      return {};
+  }
 };
 
 export default generate;

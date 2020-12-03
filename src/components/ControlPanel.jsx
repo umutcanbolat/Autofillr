@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select } from 'antd';
 import { generateNew } from '../utils/dataGenerator';
 import * as Styled from '../styles';
@@ -8,32 +8,42 @@ const { Option } = Select;
 const handleSubmit = (fields) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id, fields, (response) => {
+      // eslint-disable-next-line no-console
       console.log(response);
     });
   });
 };
 
-export default function ControlPanel({ fields, onChange }) {
+const defaultMarket = 'se';
+
+export default function ControlPanel({ fields, onGenerate }) {
+  const [market, setMarket] = useState(defaultMarket);
+
+  useEffect(() => {
+    const newData = generateNew(market);
+    onGenerate(newData);
+  }, [market]);
+
   return (
     <div className="container">
       <Styled.ControlPanel>
         <Styled.CountryLabel>Country</Styled.CountryLabel>
         <Select
-          defaultValue="sw"
           style={{ width: 'fit-content' }}
           size="small"
-          onChange={() => {
-            onChange();
+          value={market}
+          onChange={(val) => {
+            setMarket(val);
           }}
         >
-          <Option value="sw">Sweeden</Option>
+          <Option value="se">Sweeden</Option>
           <Option value="de">Germany</Option>
         </Select>
         <Styled.FillButton
           type="primary"
           onClick={() => {
             handleSubmit(fields);
-            onChange(generateNew());
+            onGenerate(generateNew(market));
           }}
         >
           Fill now!
