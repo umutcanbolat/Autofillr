@@ -1,17 +1,6 @@
-const ids = {
-  firstName: ['given_name'],
-  familyName: ['family_name'],
-  nationalId: ['national_identification_number', 'nin'],
-  email: ['email'],
-  address: ['street_address'],
-  postalCode: ['postal_code'],
-  city: ['city'],
-  phone: ['phone'],
-};
-
 const fillAvailableFields = (request, _sender, sendResponse) => {
-  Object.entries(request).forEach(([key, value]) => {
-    ids[key].forEach((fieldId) => {
+  Object.values(request).forEach(({ value, ids }) => {
+    ids.forEach((fieldId) => {
       try {
         // fill any input tag whose id attribute contains `fieldId`
         const target = document.querySelectorAll(`input[id*='${fieldId}']`)[0];
@@ -20,7 +9,7 @@ const fillAvailableFields = (request, _sender, sendResponse) => {
         event.initEvent('input', true, true);
         target.dispatchEvent(event);
       } catch (e) {
-        console.error(e);
+        // let's pretend like nothing has happened
       }
     });
   });
