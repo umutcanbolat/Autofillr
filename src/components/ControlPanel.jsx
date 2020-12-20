@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Select } from 'antd';
-import { generateNew } from '../utils/dataGenerator';
+import generate from '../utils/dataGenerator';
 import * as Styled from '../styles';
 
 const { Option } = Select;
@@ -20,7 +20,7 @@ export default function ControlPanel({ fields, onGenerate }) {
   const [market, setMarket] = useState(defaultMarket);
 
   useEffect(() => {
-    const newData = generateNew(market);
+    const newData = generate(market);
     onGenerate(newData);
   }, [market]);
 
@@ -43,7 +43,7 @@ export default function ControlPanel({ fields, onGenerate }) {
           type="primary"
           onClick={() => {
             handleSubmit(fields);
-            onGenerate(generateNew(market));
+            onGenerate(generate(market));
           }}
         >
           Fill now!

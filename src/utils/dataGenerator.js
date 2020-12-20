@@ -1,8 +1,6 @@
 import { se, de } from '../conf';
 
-const generate = () => {};
-
-export const generateNew = (country) => {
+const generate = (country) => {
   switch (country) {
     case 'se':
       return se();

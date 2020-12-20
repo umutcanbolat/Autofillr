@@ -1,8 +1,29 @@
-import defaultConfig from './default';
+import { getName, getEmail } from '../utils/faker';
 
 export default function getConfig() {
+  const { firstName, familyName, prefix } = getName();
+
   return {
-    ...defaultConfig(),
+    firstName: {
+      title: 'First Name',
+      value: firstName,
+      ids: ['given_name'],
+    },
+    familyName: {
+      title: 'Family Name',
+      value: familyName,
+      ids: ['family_name'],
+    },
+    email: {
+      title: 'Email',
+      value: getEmail(firstName, familyName),
+      ids: ['email'],
+    },
+    title: {
+      title: 'title', // way so many titles :))
+      value: prefix,
+      ids: ['5cdd013a-1db1-4f89-9cd4-b8bd9807c732'],
+    },
     address: {
       title: 'Address',
       value: 'Panoramastraße 1A',

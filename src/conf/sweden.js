@@ -1,10 +1,26 @@
-import defaultConfig from './default';
+import { getName, getEmail } from '../utils/faker';
 
 const generatePno = require('personal-number-generator');
 
 export default function getConfig() {
+  const { firstName, familyName } = getName();
+
   return {
-    ...defaultConfig(),
+    firstName: {
+      title: 'First Name',
+      value: firstName,
+      ids: ['given_name'],
+    },
+    familyName: {
+      title: 'Family Name',
+      value: familyName,
+      ids: ['family_name'],
+    },
+    email: {
+      title: 'Email',
+      value: getEmail(firstName, familyName),
+      ids: ['email'],
+    },
     nationalId: {
       title: 'National ID',
       value: generatePno(),
