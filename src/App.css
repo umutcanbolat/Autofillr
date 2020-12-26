@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-body {
+html {
   width: 30rem;
   height: fit-content;
   padding: 1rem 0;
