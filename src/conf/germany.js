@@ -21,7 +21,7 @@ export default function getConfig() {
       ids: ['email'],
     },
     title: {
-      title: 'title', // way so many titles :))
+      title: 'Title', // way so many titles :))
       value: prefix,
       ids: ['5cdd013a-1db1-4f89-9cd4-b8bd9807c732'],
     },

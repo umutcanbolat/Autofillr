@@ -9,6 +9,11 @@ html {
   font-family: poppins;
 }
 
+::selection {
+  color: white;
+  background: #3a506b;
+  text-shadow: none;
+}
 .container {
   width: 90%;
   margin: 0 auto;
