@@ -10,12 +10,6 @@ export const Label = styled.span`
   color: ${(props) => props.theme.primaryColor};
   font-weight: bold;
 
-  /* use lodash to handle camelCase  */
-  /* https://lodash.com/docs/4.17.15#startCase */
-  &:first-letter {
-    text-transform: capitalize;
-  }
-
   &::after {
     content: ':';
     margin: 0 0.5em 0 0.125em;

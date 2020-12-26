@@ -1,6 +1,5 @@
 export default {
-  // Ubuntu orange. https://design.ubuntu.com/brand/colour-palette/
-  primaryColor: '#e95420',
-  primaryLighter: '#ed764d',
-  primaryDarker: '#ba431a',
+  primaryColor: '#FF1D37',
+  primaryLighter: '#FF506A',
+  primaryDarker: '#E6041E',
 };
