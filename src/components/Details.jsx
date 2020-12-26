@@ -20,7 +20,7 @@ export default function Details({ fields, onChange }) {
     <>
       <div className="container">
         <Styled.Details>
-          <Row gutter={[16, 18]}>{entries}</Row>
+          <Row gutter={[16, 5]}>{entries}</Row>
         </Styled.Details>
       </div>
     </>
