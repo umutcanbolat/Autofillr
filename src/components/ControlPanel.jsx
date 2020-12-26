@@ -14,15 +14,16 @@ const handleSubmit = (fields) => {
   });
 };
 
-const defaultMarket = 'se';
+const defaultCountry = 'se';
 
 export default function ControlPanel({ fields, onGenerate }) {
-  const [market, setMarket] = useState(defaultMarket);
+  const [country, setCountry] = useState(localStorage.getItem('country') || defaultCountry);
 
   useEffect(() => {
-    const newData = generate(market);
+    localStorage.setItem('country', country);
+    const newData = generate(country);
     onGenerate(newData);
-  }, [market]);
+  }, [country]);
 
   return (
     <div className="container">
@@ -31,9 +32,9 @@ export default function ControlPanel({ fields, onGenerate }) {
         <Select
           style={{ width: 'fit-content' }}
           size="small"
-          value={market}
+          value={country}
           onChange={(val) => {
-            setMarket(val);
+            setCountry(val);
           }}
         >
           <Option value="se">Sweden</Option>
@@ -43,7 +44,7 @@ export default function ControlPanel({ fields, onGenerate }) {
           type="primary"
           onClick={() => {
             handleSubmit(fields);
-            onGenerate(generate(market));
+            onGenerate(generate(country));
           }}
         >
           Fill now!
