@@ -36,7 +36,7 @@ export default function ControlPanel({ fields, onGenerate }) {
             setMarket(val);
           }}
         >
-          <Option value="se">Sweeden</Option>
+          <Option value="se">Sweden</Option>
           <Option value="de">Germany</Option>
         </Select>
         <Styled.FillButton

@@ -1,4 +1,5 @@
-import { getName, getEmail } from '../utils/faker';
+import { getName, getEmail, getDateOfBirth } from '../utils/faker';
+import { getFormattedDate } from '../utils/dateUtils';
 
 export default function getConfig() {
   const { firstName, familyName, prefix } = getName();
@@ -31,7 +32,7 @@ export default function getConfig() {
     },
     postalCode: {
       title: 'Postal Code',
-      value: '10178 1A',
+      value: '10178',
       ids: ['postal_code'],
     },
     city: {
@@ -43,6 +44,11 @@ export default function getConfig() {
       title: 'Phone',
       value: '+4930247575875',
       ids: ['phone'],
+    },
+    dateOfBirth: {
+      title: 'Date of Birth',
+      value: getFormattedDate(getDateOfBirth()),
+      ids: ['date_of_birth'],
     },
   };
 }
