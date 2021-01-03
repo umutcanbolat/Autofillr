@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Autofillr",
-  "description": "Automatically fill unnecessary forms with consistent fake data",
+  "description": "Automatically fill forms with consistently generated data",
   "version": "0.1.0",
   "browser_action": {
     "default_popup": "index.html",
