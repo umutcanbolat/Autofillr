@@ -5,6 +5,8 @@ const fillAvailableFields = (request, _sender, sendResponse) => {
         // fill any input tag whose id attribute contains `fieldId`
         const target = document.querySelectorAll(`input[id*='${fieldId}']`)[0];
         target.dispatchEvent(new Event('focus', { bubbles: true }));
+        target.value = '';
+        target.dispatchEvent(new Event('input', { bubbles: true }));
         target.value = value;
         target.dispatchEvent(new Event('input', { bubbles: true }));
         target.dispatchEvent(new Event('blur', { bubbles: true }));
