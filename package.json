@@ -2,31 +2,33 @@
   "name": "autofillr",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "antd": "^4.6.1",
-    "faker": "^5.1.0",
-    "personal-number-generator": "^1.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "styled-components": "^5.2.0"
-  },
+  "description": "Automatically fill forms with consistently generated data",
+  "repository": "https://github.com/umutcanbolat/autofillr.git",
+  "license": "MIT",
+  "author": "umutcanbolat <hello@umutcanbolat.com>",
+  "main": "index.js",
   "scripts": {
-    "start": "npm-run-all -p build:ui:watch copyContentScripts:watch",
     "build": "npm-run-all build:ui copyContentScripts",
-    "start:ui": "react-scripts start",
     "build:ui": "react-scripts build",
     "build:ui:watch": "cra-build-watch",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "commit": "git-cz",
     "copyContentScripts": "cpy src/contentScripts/* build",
     "copyContentScripts:watch": "chokidar src/contentScripts -c \"yarn copyContentScripts\" --initial",
-    "commit": "git-cz",
+    "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx src/",
-    "lint:fix": "eslint --ext .js,.jsx src/ --fix"
+    "lint:fix": "eslint --ext .js,.jsx src/ --fix",
+    "start": "npm-run-all -p build:ui:watch copyContentScripts:watch",
+    "start:ui": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix"
   },
   "browserslist": {
     "production": [
@@ -39,6 +41,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.6.1",
+    "faker": "^5.1.0",
+    "personal-number-generator": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.11.5",
@@ -59,19 +73,5 @@
     "lint-staged": "^10.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.1"
-  },
-  "description": "Automatically fill forms with consistently generated data",
-  "main": "index.js",
-  "repository": "https://github.com/umutcanbolat/autofillr.git",
-  "author": "umutcanbolat <hello@umutcanbolat.com>",
-  "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix"
   }
 }
