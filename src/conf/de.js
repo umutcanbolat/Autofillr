@@ -1,7 +1,7 @@
 import { getName, getEmail, getDateOfBirth } from '../utils/faker';
 import { getFormattedDate } from '../utils/dateUtils';
 
-export default function getConfig() {
+function generate() {
   const { firstName, familyName, prefix } = getName();
 
   return {
@@ -52,3 +52,8 @@ export default function getConfig() {
     },
   };
 }
+
+export default {
+  name: 'Germany',
+  generate,
+};

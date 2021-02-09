@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Select } from 'antd';
-import generate from '../utils/dataGenerator';
+import * as configs from '../conf';
 import * as Styled from '../styles';
 
 const { Option } = Select;
@@ -14,14 +14,16 @@ const handleSubmit = (fields) => {
   });
 };
 
-const defaultCountry = 'se';
+const initialCountry = configs[localStorage.getItem('country')]
+  ? localStorage.getItem('country')
+  : Object.keys(configs)[0];
 
 export default function ControlPanel({ fields, onGenerate }) {
-  const [country, setCountry] = useState(localStorage.getItem('country') || defaultCountry);
+  const [country, setCountry] = useState(initialCountry);
 
   useEffect(() => {
     localStorage.setItem('country', country);
-    const newData = generate(country);
+    const newData = configs[country].generate(country);
     onGenerate(newData);
   }, [country]);
 
@@ -37,14 +39,19 @@ export default function ControlPanel({ fields, onGenerate }) {
             setCountry(val);
           }}
         >
-          <Option value="se">Sweden</Option>
-          <Option value="de">Germany</Option>
+          {Object.entries(configs).map(([countryCode, { name }]) => {
+            return (
+              <Option key={countryCode} value={countryCode}>
+                {name}
+              </Option>
+            );
+          })}
         </Select>
         <Styled.FillButton
           type="primary"
           onClick={() => {
             handleSubmit(fields);
-            onGenerate(generate(country));
+            onGenerate(configs[country].generate(country));
           }}
         >
           Fill now!

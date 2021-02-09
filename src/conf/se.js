@@ -2,7 +2,7 @@ import { getName, getEmail } from '../utils/faker';
 
 const generatePno = require('personal-number-generator');
 
-export default function getConfig() {
+function generate() {
   const { firstName, familyName } = getName();
 
   return {
@@ -48,3 +48,8 @@ export default function getConfig() {
     },
   };
 }
+
+export default {
+  name: 'Sweden',
+  generate,
+};
