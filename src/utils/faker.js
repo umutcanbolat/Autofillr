@@ -3,6 +3,7 @@ import faker from 'faker';
 export const getName = (gender = ['male', 'female'][Math.round(Math.random())]) => ({
   firstName: faker.name.firstName(gender),
   familyName: faker.name.lastName(gender),
+  genderCode: gender[0].toUpperCase(),
   prefix: gender === 'male' ? 'Mr.' : 'Ms.',
 });
 

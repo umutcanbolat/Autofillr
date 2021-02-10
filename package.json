@@ -47,6 +47,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.6.1",
+    "codice-fiscale-js": "^2.3.7",
     "faker": "^5.1.0",
     "personal-number-generator": "^1.0.0",
     "react": "^16.13.1",
