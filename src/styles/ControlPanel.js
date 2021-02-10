@@ -15,6 +15,8 @@ export const CountryLabel = styled.span`
 
 export const FillButton = styled(Button)`
   margin-left: auto;
+  font-weight: bold;
+
   background: ${(props) => props.theme.primaryColor};
   border-color: ${(props) => props.theme.primaryColor};
   &:hover {

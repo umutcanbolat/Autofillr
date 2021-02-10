@@ -53,7 +53,7 @@ export default function ControlPanel({ fields, setFields }) {
             setFields(configs[country].generate(country));
           }}
         >
-          Fill now!
+          Fill & Generate
         </Styled.FillButton>
       </Styled.ControlPanel>
     </div>
