@@ -31,8 +31,7 @@ export default function ControlPanel({ fields, setFields }) {
     <div className="container">
       <Styled.ControlPanel>
         <Styled.CountryLabel>Country</Styled.CountryLabel>
-        <Select
-          style={{ width: 'fit-content' }}
+        <Styled.CountrySelector
           size="small"
           value={country}
           onChange={(val) => {
@@ -46,7 +45,7 @@ export default function ControlPanel({ fields, setFields }) {
               </Option>
             );
           })}
-        </Select>
+        </Styled.CountrySelector>
         <Styled.FillButton
           type="primary"
           onClick={() => {

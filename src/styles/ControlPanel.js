@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'antd';
+import { Button, Select } from 'antd';
 
 export const ControlPanel = styled.div`
   display: flex;
@@ -29,4 +29,9 @@ export const FillButton = styled(Button)`
     background: ${(props) => props.theme.primaryDarker};
     border-color: ${(props) => props.theme.primaryDarker};
   }
+`;
+
+export const CountrySelector = styled(Select)`
+  width: fit-content;
+  min-width: 6rem;
 `;
