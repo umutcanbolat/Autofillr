@@ -37,7 +37,7 @@ function App() {
       <Divider />
       <ControlPanel
         fields={formData}
-        onGenerate={(data) => {
+        setFields={(data) => {
           dispatch({ action: 'set', formData: data });
         }}
       />

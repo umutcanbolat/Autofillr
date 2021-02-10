@@ -18,13 +18,13 @@ const initialCountry = configs[localStorage.getItem('country')]
   ? localStorage.getItem('country')
   : Object.keys(configs)[0];
 
-export default function ControlPanel({ fields, onGenerate }) {
+export default function ControlPanel({ fields, setFields }) {
   const [country, setCountry] = useState(initialCountry);
 
   useEffect(() => {
     localStorage.setItem('country', country);
     const newData = configs[country].generate(country);
-    onGenerate(newData);
+    setFields(newData);
   }, [country]);
 
   return (
@@ -51,7 +51,7 @@ export default function ControlPanel({ fields, onGenerate }) {
           type="primary"
           onClick={() => {
             handleSubmit(fields);
-            onGenerate(configs[country].generate(country));
+            setFields(configs[country].generate(country));
           }}
         >
           Fill now!
