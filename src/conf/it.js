@@ -1,6 +1,6 @@
 import CodiceFiscale from 'codice-fiscale-js';
 import { getName, getEmail, getDateOfBirth } from '../utils/faker';
-import { getFormattedDate } from '../utils/dateUtils';
+import { getFormattedDate, getRandomDigits } from '../utils/utils';
 
 function generate() {
   const { firstName, familyName, genderCode } = getName();
@@ -57,9 +57,10 @@ function generate() {
       value: 'RM',
       ids: ['region'],
     },
+    // https://en.wikipedia.org/wiki/Telephone_numbers_in_Italy#Landline_service
     phone: {
       title: 'Phone',
-      value: '+390639967700',
+      value: `+3906${getRandomDigits(8)}`, // 06 is the geographical code of Rome.
       ids: ['phone'],
     },
     dateOfBirth: {

@@ -35,5 +35,5 @@ export const FillButton = styled(Button)`
 
 export const CountrySelector = styled(Select)`
   width: fit-content;
-  min-width: 6rem;
+  min-width: 7rem;
 `;

@@ -27,23 +27,23 @@ function generate() {
     },
     address: {
       title: 'Address',
-      value: 'Panoramastraße 1A',
+      value: 'Museumplein 6',
       ids: ['street_address'],
     },
     postalCode: {
       title: 'Postal Code',
-      value: '10178',
+      value: '1071 DJ',
       ids: ['postal_code'],
     },
     city: {
       title: 'City',
-      value: 'Berlin',
+      value: 'Amsterdam',
       ids: ['city'],
     },
-    // https://en.wikipedia.org/wiki/Telephone_numbers_in_Germany#Geographic_numbering
+    // https://en.wikipedia.org/wiki/Telephone_numbers_in_the_Netherlands#Geographical_telephone_numbers
     phone: {
       title: 'Phone',
-      value: `+4930${getRandomDigits(8)}`, // 30 is the geographic area code of Berlin.
+      value: `+3120${getRandomDigits(7)}`, // 20 is Amsterdam's geographical number.
       ids: ['phone'],
     },
     dateOfBirth: {
@@ -55,6 +55,6 @@ function generate() {
 }
 
 export default {
-  name: 'Germany',
+  name: 'Netherlands',
   generate,
 };
