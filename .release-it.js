@@ -4,5 +4,10 @@ module.exports = {
       preset: 'angular',
       //   infile: 'CHANGELOG.md',
     },
+    '@release-it/bumper': {
+      out: {
+        file: 'public/manifest.json',
+      },
+    },
   },
 };
