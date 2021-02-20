@@ -20,7 +20,7 @@
     "start": "npm-run-all -p build:ui:watch copyContentScripts:watch",
     "start:ui": "react-scripts start",
     "test": "react-scripts test",
-    "ci:release": "release-it",
+    "ci:release": "release-it --ci",
     "ci:release:dry": "yarn ci:release --dry-run"
   },
   "husky": {
