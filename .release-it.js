@@ -1,4 +1,7 @@
 module.exports = {
+  git: {
+    commitMessage: 'chore(release): v${version}',
+  },
   plugins: {
     '@release-it/conventional-changelog': {
       preset: 'angular',
