@@ -1,11 +1,15 @@
 module.exports = {
   git: {
     commitMessage: 'chore(release): v${version}',
-    // requireBranch: 'master',
+    requireBranch: 'master',
     requireCommits: 'true',
   },
   npm: {
     publish: false,
+  },
+  github: {
+    release: true,
+    assets: ['dist/**/*.zip'],
   },
   plugins: {
     '@release-it/conventional-changelog': {
@@ -17,5 +21,8 @@ module.exports = {
         file: 'public/manifest.json',
       },
     },
+  },
+  hooks: {
+    'before:github:release': './tools/pack-chromium.sh v${version}',
   },
 };
