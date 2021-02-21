@@ -8,7 +8,7 @@
   "author": "umutcanbolat <hello@umutcanbolat.com>",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all build:ui copyContentScripts",
+    "build": "npm-run-all clean build:ui copyContentScripts",
     "build:ui": "react-scripts build",
     "build:ui:watch": "cra-build-watch",
     "commit": "git-cz",
@@ -21,7 +21,8 @@
     "start:ui": "react-scripts start",
     "test": "react-scripts test",
     "ci:release": "release-it --ci",
-    "ci:release:dry": "yarn ci:release --dry-run"
+    "ci:release:dry": "yarn ci:release --dry-run",
+    "clean": "rimraf dist build"
   },
   "husky": {
     "hooks": {
@@ -78,6 +79,7 @@
     "lint-staged": "^10.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.1",
-    "release-it": "^14.4.1"
+    "release-it": "^14.4.1",
+    "rimraf": "^3.0.2"
   }
 }
