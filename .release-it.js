@@ -10,6 +10,7 @@ module.exports = {
   github: {
     release: true,
     assets: ['dist/**/*.zip'],
+    releaseName: 'v${version}',
   },
   plugins: {
     '@release-it/conventional-changelog': {
