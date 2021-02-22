@@ -11,6 +11,7 @@ module.exports = {
     release: true,
     assets: ['dist/**/*.zip'],
     releaseName: 'v${version}',
+    releaseNote: './tools/generate-release-note.sh',
   },
   plugins: {
     '@release-it/conventional-changelog': {
