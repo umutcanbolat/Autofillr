@@ -3,6 +3,7 @@ module.exports = {
     commitMessage: 'chore(release): v${version}',
     requireBranch: 'master',
     requireCommits: 'true',
+    tagName: 'v${version}',
   },
   npm: {
     publish: false,
@@ -11,7 +12,7 @@ module.exports = {
     release: true,
     assets: ['dist/**/*.zip'],
     releaseName: 'v${version}',
-    releaseNote: './tools/generate-release-note.sh',
+    releaseNote: 'sudo ./tools/generate-release-note.sh',
   },
   plugins: {
     '@release-it/conventional-changelog': {
@@ -25,6 +26,6 @@ module.exports = {
     },
   },
   hooks: {
-    'before:github:release': './tools/pack-chromium.sh v${version}',
+    'before:github:release': 'sudo ./tools/pack-chromium.sh v${version}',
   },
 };
