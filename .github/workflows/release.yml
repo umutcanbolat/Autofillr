@@ -32,7 +32,12 @@ jobs:
           yarn
           yarn build
 
+      - name: Setup commit user
+        run: |
+          git config user.name "Github Actions Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: release
         run: yarn ci:release
         env:
-          GITHUB_TOKEN: secrets.GITHUB_TOKEN
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
