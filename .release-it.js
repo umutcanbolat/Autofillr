@@ -25,6 +25,7 @@ module.exports = {
     },
   },
   hooks: {
+    'after:bump': 'yarn build',
     'before:github:release': './tools/pack-chromium.sh v${version}',
   },
 };
