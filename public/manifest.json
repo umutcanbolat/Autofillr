@@ -2,21 +2,23 @@
   "manifest_version": 2,
   "name": "Autofillr",
   "description": "Automatically fill forms with consistently generated data",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Autofillr"
   },
   "content_scripts": [
     {
-    "matches": [
+      "matches": [
         "http://*/*",
         "https://*/*"
-        ],
-    "js": ["content.js"],
-    "all_frames": true
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true
     }
-], 
+  ],
   "icons": {
     "16": "Autofillr-16.png",
     "32": "Autofillr-32.png",

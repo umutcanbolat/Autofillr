@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/umutcanbolat/autofillr/compare/v0.1.0...v0.2.0) (2021-02-25)
+
+
+### Features
+
+* 🎸 add Italy ([ac43d53](https://github.com/umutcanbolat/autofillr/commit/ac43d53a1e7a5737432e59a3b14b2d8237d5462f))
+* 🎸 add NL config ([0305bdf](https://github.com/umutcanbolat/autofillr/commit/0305bdfa318440a508f1df45b340ce720366f25d))
+* 🎸 clear the input before setting value ([6ecf889](https://github.com/umutcanbolat/autofillr/commit/6ecf889492d3fb5249e7b98ee727fbccfee83d32))
+
 ## 0.1.0 (2021-01-03)
 
 ### Features
