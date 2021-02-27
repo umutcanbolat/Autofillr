@@ -2,7 +2,7 @@
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/umutcanbolat/Autofillr?label=latest%20release&logo=github&style=flat-square)](https://github.com/umutcanbolat/Autofillr/releases/latest)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jcgfleiagjfjlgdpbignhphpdcbjplco?color=light-green&logo=google-chrome&logoColor=white&style=flat-square)](https://chrome.google.com/webstore/detail/autofillr/jcgfleiagjfjlgdpbignhphpdcbjplco)
-![GitHub](https://img.shields.io/github/license/umutcanbolat/Autofillr?logoColor=white&logo=gnu&style=flat-square)
+[![License](https://img.shields.io/github/license/umutcanbolat/Autofillr?logoColor=white&logo=gnu&style=flat-square)](LICENSE)
 [![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-fe5196.svg?style=flat-square)](https://conventionalcommits.org)
 
 Autofillr is a browser extension that can fill registration forms with randomly but consistently generated data. Consistent here means that the values of the generated fields will be valid between each other. For example, some countries may have date of birth included in national identification numbers. In a such case, Autofillr considers this while generating both fields.
