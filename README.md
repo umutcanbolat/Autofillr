@@ -28,7 +28,7 @@ Here is an example form that Autofillr can fill in: [codesandbox](https://8vc76.
 The project consists of 2 parts.
 
 - UI: The pop-up that users can interact with. This is a very simple `create react app` project.
-- Content script: This basically fills the form inputs on any web page when UI sends a message with the generated data. See [src\contentScripts\content.js](src\contentScripts\content.js)
+- Content script: This basically fills the form inputs on any web page when UI sends a message with the generated data. See [src/contentScripts/content.js](src/contentScripts/content.js)
 
 To start the project in development mode, just run `yarn start`. This will watch both the UI project and the content script to copy them into the build folder when a change is made. Then you can point the build folder in chrome to load the unpacked extension.
 
