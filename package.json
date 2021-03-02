@@ -4,7 +4,7 @@
   "private": true,
   "description": "Automatically fill forms with consistently generated data",
   "repository": "https://github.com/umutcanbolat/autofillr.git",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "author": "umutcanbolat <hello@umutcanbolat.com>",
   "main": "index.js",
   "scripts": {
