@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Autofillr",
-  "description": "Automatically fill forms with consistently generated data",
+  "description": "Automatically fill registration forms with consistently generated random data.",
   "version": "0.2.0",
   "browser_action": {
     "default_popup": "index.html",
@@ -9,13 +9,8 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "content.js"
-      ],
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
       "all_frames": true
     }
   ],
