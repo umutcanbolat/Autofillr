@@ -17,7 +17,7 @@ So, I felt the need to develop this tool that does the dirty job for me :D
 
 All the data generation happens locally. So, Autofillr does not send any requests to a remote service or api. Thanks to the libraries like [Faker.js](https://github.com/marak/Faker.js/).
 
-To fill in the forms on websites, it uses a list of html ids for each input field.
+To fill in the forms on websites, it uses [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
 
 Here is an example form that Autofillr can fill in: [codesandbox](https://8vc76.csb.app/)
 
