@@ -13,7 +13,6 @@ const fillAvailableFields = (request, _sender, sendResponse) => {
   clearInputs();
   Object.values(request).forEach(({ value, autocomplete }) => {
     try {
-      // fill any input tag whose id attribute contains `fieldId`
       const target = document.querySelectorAll(`input[autocomplete*='${autocomplete}']`)[0];
       target.dispatchEvent(new Event('focus', { bubbles: true }));
       target.value = value;
