@@ -10,43 +10,43 @@ function generate() {
     firstName: {
       title: 'First Name',
       value: firstName,
-      ids: ['given_name'],
+      autocomplete: 'given-name',
     },
     familyName: {
       title: 'Family Name',
       value: familyName,
-      ids: ['family_name'],
+      autocomplete: 'family-name',
     },
     email: {
       title: 'Email',
       value: getEmail(firstName, familyName),
-      ids: ['email'],
+      autocomplete: 'email',
     },
     nationalId: {
       title: 'National ID',
       value: generatePno(),
-      ids: ['national_identification_number', 'nin'],
+      autocomplete: 'nin',
     },
     address: {
       title: 'Address',
       value: 'Galärvarvsvägen 14',
-      ids: ['street_address'],
+      autocomplete: 'address-line1',
     },
     postalCode: {
       title: 'Postal Code',
       value: '115 21',
-      ids: ['postal_code'],
+      autocomplete: 'postal-code',
     },
     city: {
       title: 'City',
       value: 'Stockholm',
-      ids: ['city'],
+      autocomplete: 'address-level2',
     },
     // https://en.wikipedia.org/wiki/Telephone_numbers_in_Sweden#Area_codes
     phone: {
       title: 'Phone',
       value: `+468${getRandomDigits(8)}`, // 8 is the are code of Stockholm.
-      ids: ['phone'],
+      autocomplete: 'tel',
     },
   };
 }

@@ -20,53 +20,53 @@ function generate() {
     firstName: {
       title: 'First Name',
       value: firstName,
-      ids: ['given_name'],
+      autocomplete: 'given-name',
     },
     familyName: {
       title: 'Family Name',
       value: familyName,
-      ids: ['family_name'],
+      autocomplete: 'family-name',
     },
     email: {
       title: 'Email',
       value: getEmail(firstName, familyName),
-      ids: ['email'],
+      autocomplete: 'email',
     },
     nationalId: {
       title: 'Fiscal Code',
       value: fiscalCode,
-      ids: ['national_identification_number', 'nin'],
+      autocomplete: 'nin',
     },
     address: {
       title: 'Address',
       value: 'Piazza del Colosseo 1',
-      ids: ['street_address'],
+      autocomplete: 'address-line1',
     },
     postalCode: {
       title: 'Postal Code',
       value: '00184',
-      ids: ['postal_code'],
+      autocomplete: 'postal-code',
     },
     city: {
       title: 'City',
       value: 'Roma',
-      ids: ['city'],
+      autocomplete: 'address-level2',
     },
     region: {
       title: 'Province',
       value: 'RM',
-      ids: ['region'],
+      autocomplete: 'address-level1',
     },
     // https://en.wikipedia.org/wiki/Telephone_numbers_in_Italy#Landline_service
     phone: {
       title: 'Phone',
       value: `+3906${getRandomDigits(8)}`, // 06 is the geographical code of Rome.
-      ids: ['phone'],
+      autocomplete: 'tel',
     },
     dateOfBirth: {
       title: 'Date of Birth',
       value: getFormattedDate(dateOfBirth),
-      ids: ['date_of_birth'],
+      autocomplete: 'bday',
     },
   };
 }
