@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/umutcanbolat/autofillr/compare/v0.2.0...v1.0.0) (2021-06-08)
+
+
+### Features
+
+* 🎸 do not set inputs blank unnecessarily ([1294ebf](https://github.com/umutcanbolat/autofillr/commit/1294ebfbcfcec2f1962a1a94b657eef904dce23c))
+* 🎸 use autocomplete for it and nl too ([da889fa](https://github.com/umutcanbolat/autofillr/commit/da889faf7a3364280e47703f5b2f4acc6b4aa854))
+* 🎸 use html autocomplete attribute to fill in inputs ([8d52089](https://github.com/umutcanbolat/autofillr/commit/8d52089c9f0b459014fa35b2d6bb7bd944abd690))
+
+
+### BREAKING CHANGES
+
+* 🧨 ids are not used anymore for input filling
+
 # [0.2.0](https://github.com/umutcanbolat/autofillr/compare/v0.1.0...v0.2.0) (2021-02-25)
 
 
