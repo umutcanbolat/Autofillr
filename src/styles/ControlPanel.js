@@ -36,4 +36,8 @@ export const FillButton = styled(Button)`
 export const CountrySelector = styled(Select)`
   width: fit-content;
   min-width: 7rem;
+
+  .ant-select-selector {
+    background: ${(props) => props.theme.selectorBackground} !important;
+  }
 `;

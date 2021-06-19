@@ -10,6 +10,8 @@ export const Input = styled.input`
   &:focus {
     border: none;
   }
+
+  background: ${(props) => props.theme.background};
 `;
 
 export default Input;

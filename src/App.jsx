@@ -1,8 +1,9 @@
 import React, { useReducer } from 'react';
-import { Divider } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { Header, Details, ControlPanel } from './components';
-import { Light } from './themes';
+import { Dark } from './themes';
+import GlobalStyle from './styles/GlobalStyles';
+import * as Styled from './styles';
 import './App.css';
 
 const formReducer = (state, { action, formData }) => {
@@ -25,16 +26,17 @@ function App() {
   const [formData, dispatch] = useReducer(formReducer, {});
 
   return (
-    <ThemeProvider theme={Light}>
+    <ThemeProvider theme={Dark}>
+      <GlobalStyle />
       <Header />
-      <Divider />
+      <Styled.Divider />
       <Details
         fields={formData}
         onChange={(data) => {
           dispatch({ action: 'add', formData: data });
         }}
       />
-      <Divider />
+      <Styled.Divider />
       <ControlPanel
         fields={formData}
         setFields={(data) => {
