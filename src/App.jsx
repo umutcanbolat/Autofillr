@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useCallback } from 'react';
 import { Divider } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { Header, Details, ControlPanel } from './components';
@@ -24,6 +24,15 @@ const formReducer = (state, { action, formData }) => {
 function App() {
   const [formData, dispatch] = useReducer(formReducer, {});
 
+  const fill = useCallback(() => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, formData, (response) => {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      });
+    });
+  }, [formData]);
+
   return (
     <ThemeProvider theme={Light}>
       <Header />
@@ -33,13 +42,14 @@ function App() {
         onChange={(data) => {
           dispatch({ action: 'add', formData: data });
         }}
+        onSubmit={fill}
       />
       <Divider />
       <ControlPanel
-        fields={formData}
         setFields={(data) => {
           dispatch({ action: 'set', formData: data });
         }}
+        onSubmit={fill}
       />
     </ThemeProvider>
   );

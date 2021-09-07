@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import Entry from './Entry';
 import * as Styled from '../styles';
 
-export default function Details({ fields, onChange }) {
+export default function Details({ fields, onChange, onSubmit }) {
   const entries = Object.entries(fields).map(([fieldKey, fieldProps]) => (
     <Col key={fieldKey} span={12}>
       <Entry
@@ -12,6 +12,7 @@ export default function Details({ fields, onChange }) {
         onChange={(value) => {
           onChange({ [fieldKey]: { ...fieldProps, value } });
         }}
+        onSubmit={onSubmit}
       />
     </Col>
   ));

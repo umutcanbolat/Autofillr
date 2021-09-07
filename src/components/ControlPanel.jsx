@@ -5,20 +5,11 @@ import * as Styled from '../styles';
 
 const { Option } = Select;
 
-const handleSubmit = (fields) => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, fields, (response) => {
-      // eslint-disable-next-line no-console
-      console.log(response);
-    });
-  });
-};
-
 const initialCountry = configs[localStorage.getItem('country')]
   ? localStorage.getItem('country')
   : Object.keys(configs)[0];
 
-export default function ControlPanel({ fields, setFields }) {
+export default function ControlPanel({ setFields, onSubmit }) {
   const [country, setCountry] = useState(initialCountry);
 
   useEffect(() => {
@@ -49,7 +40,7 @@ export default function ControlPanel({ fields, setFields }) {
         <Styled.FillButton
           type="primary"
           onClick={() => {
-            handleSubmit(fields);
+            onSubmit();
             setFields(configs[country].generate(country));
           }}
         >
