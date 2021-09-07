@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/umutcanbolat/autofillr/compare/v1.0.0...v1.1.0) (2021-09-07)
+
+
+### Features
+
+* 🎸 clean only the relevant inputs ([4ff5e38](https://github.com/umutcanbolat/autofillr/commit/4ff5e38b3781d5e99744834de12cc8bbd5abb90e))
+* 🎸 fill inputs on enter ([59855bb](https://github.com/umutcanbolat/autofillr/commit/59855bba56748ceadc62c5040969aa03921b75c9))
+
 # [1.0.0](https://github.com/umutcanbolat/autofillr/compare/v0.2.0...v1.0.0) (2021-06-08)
 
 
