@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/umutcanbolat/autofillr/compare/v1.1.0...v1.1.1) (2021-09-08)
+
+
+### Bug Fixes
+
+* 🐛 clear the filled inputs before filling again ([6ffd512](https://github.com/umutcanbolat/autofillr/commit/6ffd5123eaec40eeb37fb323f9857430d1b50bd7))
+
 # [1.1.0](https://github.com/umutcanbolat/autofillr/compare/v1.0.0...v1.1.0) (2021-09-07)
 
 
