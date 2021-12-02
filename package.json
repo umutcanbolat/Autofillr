@@ -1,6 +1,6 @@
 {
   "name": "autofillr",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "description": "Automatically fill registration forms with consistently generated random data.",
   "repository": "https://github.com/umutcanbolat/autofillr.git",

@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/umutcanbolat/autofillr/compare/v1.1.1...v1.2.0) (2021-12-02)
+
+
+### Features
+
+* 🎸 add config for Austria ([615a467](https://github.com/umutcanbolat/autofillr/commit/615a46793a2022fb5c8e224f310953d53583d07f))
+
 ## [1.1.1](https://github.com/umutcanbolat/autofillr/compare/v1.1.0...v1.1.1) (2021-09-08)
 
 
