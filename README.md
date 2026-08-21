@@ -5,21 +5,13 @@
 [![License](https://img.shields.io/github/license/umutcanbolat/Autofillr?logoColor=white&logo=gnu&style=flat-square)](LICENSE)
 [![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-fe5196.svg?style=flat-square)](https://conventionalcommits.org)
 
-Autofillr is a browser extension that can fill registration forms with randomly but consistently generated data. Consistent here means that the values of the generated fields will be valid between each other. For example, some countries may have date of birth included in national identification numbers. In a such case, Autofillr considers this while generating both fields.
+A browser extension that fills registration forms with random but _consistent_ data — the generated fields stay valid against each other. Where a country encodes the date of birth in its national identification number, for instance, Autofillr makes the two agree.
 
-## Why?
+The point is to take the pain out of testing forms with strict validation, which otherwise means hand-crafting valid data several times a day.
 
-The intention is to make testing and development of products that have such forms easier. In some products, form validation can be so strict that finding random valid data becomes a real pain. Especially when you need to do this several times in a day, filling this data into the same form becomes cumbersome and tedious.
+Everything is generated locally: no requests to any remote service, and no runtime data-generation library. The names are a small table in [src/utils/names.js](src/utils/names.js); the rest is derived from them. Forms are matched via [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
 
-So, I felt the need to develop this tool that does the dirty job for me :D
-
-## How?
-
-All the data generation happens locally. So, Autofillr does not send any requests to a remote service or api, and it has no runtime dependency on a data-generation library: the names are a small table in [src/utils/names.js](src/utils/names.js) and everything else is derived from them.
-
-To fill in the forms on websites, it uses [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
-
-Here is an example form that Autofillr can fill in: [codesandbox](https://8vc76.csb.app/)
+Example form to try it on: [codesandbox](https://8vc76.csb.app/)
 
 <img src="https://user-images.githubusercontent.com/10065235/109368480-8adcfd00-7899-11eb-85a9-293b67c69688.gif" alt="Autofilr Gif" width="720"/>
 
@@ -27,51 +19,37 @@ Here is an example form that Autofillr can fill in: [codesandbox](https://8vc76.
 
 Requires Node.js 24 or newer, the active LTS. That is what CI builds on.
 
-The project consists of 2 parts.
-
-- UI: The pop-up that users can interact with. A React app bundled with [Vite](https://vite.dev/).
-- Content script: This basically fills the form inputs on any web page when UI sends a message with the generated data. See [src/contentScripts/content.js](src/contentScripts/content.js)
-
 ```sh
 npm install
 npm start
 ```
 
-`npm start` runs both bundles in watch mode and writes them into `build/`. Then you can point the build folder in chrome to load the unpacked extension. Chrome picks up changes when you hit the reload button on the extension card; the popup itself always reloads when you reopen it.
+`npm start` watch-builds both parts into `build/`: the **popup**, a React app bundled with [Vite](https://vite.dev/), and the **content script** ([src/contentScripts/content.js](src/contentScripts/content.js)), which fills the inputs when the popup sends it data. Point Chrome at `build/` to [load it unpacked](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked). Changes need the reload button on the extension card; the popup reloads on its own when reopened.
 
-These 3 steps from chrome developer documentation explain how to load an unpacked extension: https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked
+| Command          | What it does                                                                   |
+| ---------------- | ------------------------------------------------------------------------------ |
+| `npm start`      | Watch-build the popup and the content script                                   |
+| `npm run build`  | Production build into `build/`                                                 |
+| `npm test`       | Run the test suite ([Vitest](https://vitest.dev/))                             |
+| `npm run lint`   | Lint with ESLint                                                               |
+| `npm run format` | Format with Prettier                                                           |
+| `npm run commit` | Commit via [conventional commits](https://www.conventionalcommits.org/) prompt |
 
-| Command          | What it does                                       |
-| ---------------- | -------------------------------------------------- |
-| `npm start`      | Watch-build the popup and the content script       |
-| `npm run build`  | Production build into `build/`                     |
-| `npm test`       | Run the test suite ([Vitest](https://vitest.dev/)) |
-| `npm run lint`   | Lint with ESLint                                   |
-| `npm run format` | Format with Prettier                               |
+To add a country, drop a module exporting `generate()` into [src/conf](src/conf) and add one line to [src/conf/index.js](src/conf/index.js).
 
 ### Popup start-up time
 
-The popup is a local page, so everything it needs has to be cheap to parse. Two things are deliberate:
+The popup is a local page, so everything it needs must be cheap to parse. Two choices are deliberate:
 
-- The fonts are bundled (`@fontsource`) instead of being pulled from Google Fonts at runtime. A remote stylesheet put a render-blocking network round trip in front of every single popup open.
-- The country configs in [src/conf](src/conf) are loaded with dynamic `import()`. That keeps the table of Italian municipalities inside `codice-fiscale-js` (~300 kB, needed only for the codice fiscale) out of the chunk that has to run before the popup paints.
-
-Adding a country means adding a module to `src/conf` that exports `generate()`, plus one line in [src/conf/index.js](src/conf/index.js).
-
-To make commits complying with [conventional commits](https://www.conventionalcommits.org/), use `npm run commit`. This helps us in creating changelog and semantic versioning.
+- Fonts are bundled (`@fontsource`) rather than fetched from Google Fonts, which put a render-blocking round trip in front of every popup open.
+- Country configs load through dynamic `import()`, keeping the ~300 kB municipality table in `codice-fiscale-js` — needed only for the Italian codice fiscale — out of the chunk that runs before first paint.
 
 ## Releasing
 
-The release process is fully automated. So, triggering the [release action](https://github.com/umutcanbolat/Autofillr/actions/workflows/release.yml);
+Triggering the [release action](https://github.com/umutcanbolat/Autofillr/actions/workflows/release.yml) does the rest: builds, bumps the version in `package.json` and `manifest.json`, generates the changelog from the commits since the last tag ([Conventional Changelog](https://github.com/conventional-changelog)), commits and tags as `chore(release): v0.1.0`, pushes, and creates a GitHub release with the packed extension attached.
 
-- Builds the project.
-- Updates the version number both in package.json and manifest.json.
-- Generates a changelog based on the latest commits. (See [Conventional Changelog](https://github.com/conventional-changelog))
-- Commits these changes with a message like `chore(release): v0.1.0` and creates a new tag with this new version number.
-- Pushes all these changes upstream.
-- Creates a new release in Github Releases and attaches the packed extension files to it.
-- TODO: Uploads the packed extension to chrome dev store and applies for a review.
+TODO: upload the package to the Chrome Web Store and submit for review.
 
 ## License
 
-This project is licensed under the GNU General Public License 3 or later (GPL-3.0-or-later). See the [LICENSE](LICENSE) file for details.
+Licensed under the GNU General Public License 3 or later (GPL-3.0-or-later). See [LICENSE](LICENSE).
