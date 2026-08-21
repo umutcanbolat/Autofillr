@@ -1,3 +1,11 @@
+# Changelog
+
+## [1.2.3](https://github.com/umutcanbolat/Autofillr/compare/v1.2.2...v1.2.3) (2026-08-21)
+
+### Bug Fixes
+
+* 🐛 modernise the build and correct invalid national ids ([454f708](https://github.com/umutcanbolat/Autofillr/commit/454f70861a0075baecabc781979665860f1a3aa9))
+
 ## [1.2.2](https://github.com/umutcanbolat/autofillr/compare/v1.2.1...v1.2.2) (2024-04-18)
 
 ## [1.2.1](https://github.com/umutcanbolat/autofillr/compare/v1.2.0...v1.2.1) (2024-04-18)

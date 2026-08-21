@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Autofillr",
   "description": "Automatically fill registration forms with consistently generated random data.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "action": {
     "default_popup": "index.html",
     "default_icon": {
@@ -12,8 +12,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "all_frames": true
     }
   ],
