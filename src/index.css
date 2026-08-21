@@ -1,13 +1,61 @@
+/* The fonts used to be pulled from fonts.googleapis.com at runtime, which put a
+   render-blocking network round trip in front of every popup open (and made the
+   popup unusable offline). They are bundled now.
+
+   These @font-face rules are written out rather than importing @fontsource's own
+   stylesheets so that only the latin woff2 files are emitted -- the packaged CSS
+   also references legacy .woff files that Chrome never requests. */
+@font-face {
+  font-family: 'Paytone One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@fontsource/paytone-one/files/paytone-one-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@fontsource/poppins/files/poppins-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('@fontsource/poppins/files/poppins-latin-700-normal.woff2') format('woff2');
+}
+
+/* The root font size stays at the browser default so that `30rem` keeps
+   resolving to the same 480px popup width it did under antd's reset. */
+html {
+  width: 30rem;
+  height: fit-content;
+  padding: 1rem 0;
+  color-scheme: light;
+  background: #fff;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  color: rgb(0 0 0 / 85%);
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  line-height: 1.5715;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::selection {
+  color: white;
+  background: #3a506b;
+  text-shadow: none;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
 }

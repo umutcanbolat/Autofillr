@@ -1,9 +1,8 @@
-import { getName, getEmail } from '../utils/faker';
+import generatePno from 'personal-number-generator';
+import { getName, getEmail } from '../utils/person';
 import { getRandomDigits } from '../utils/utils';
 
-const generatePno = require('personal-number-generator');
-
-function generate() {
+export function generate() {
   const { firstName, familyName } = getName();
 
   return {
@@ -24,7 +23,7 @@ function generate() {
     },
     nationalId: {
       title: 'National ID',
-      value: generatePno(),
+      value: String(generatePno()).padStart(10, '0'),
       autocomplete: 'nin',
     },
     address: {
@@ -50,8 +49,3 @@ function generate() {
     },
   };
 }
-
-export default {
-  name: 'Sweden',
-  generate,
-};

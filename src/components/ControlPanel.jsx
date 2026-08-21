@@ -1,50 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { Select } from 'antd';
-import * as configs from '../conf';
+import React, { useCallback, useEffect, useId, useState } from 'react';
+import configs, { generateFor } from '../conf';
 import * as Styled from '../styles';
 
-const { Option } = Select;
-
-const initialCountry = configs[localStorage.getItem('country')]
-  ? localStorage.getItem('country')
-  : Object.keys(configs)[0];
+const storedCountry = localStorage.getItem('country');
+const initialCountry = configs[storedCountry] ? storedCountry : Object.keys(configs)[0];
 
 export default function ControlPanel({ setFields, onSubmit }) {
   const [country, setCountry] = useState(initialCountry);
+  const selectId = useId();
+
+  const regenerate = useCallback(
+    async (countryCode) => {
+      setFields(await generateFor(countryCode));
+    },
+    [setFields],
+  );
 
   useEffect(() => {
     localStorage.setItem('country', country);
-    const newData = configs[country].generate(country);
-    setFields(newData);
-  }, [country]);
+
+    // Guards against a slower config resolving after a faster one when the
+    // country is switched twice in a row.
+    let current = true;
+    generateFor(country).then((fields) => {
+      if (current) setFields(fields);
+    });
+
+    return () => {
+      current = false;
+    };
+  }, [country, setFields]);
 
   return (
     <div className="container">
       <Styled.ControlPanel>
-        <Styled.CountryLabel>Country</Styled.CountryLabel>
+        <Styled.CountryLabel htmlFor={selectId}>Country</Styled.CountryLabel>
         <Styled.CountrySelector
-          size="small"
+          id={selectId}
           value={country}
-          onChange={(val) => {
-            setCountry(val);
+          onChange={(event) => {
+            setCountry(event.target.value);
           }}
         >
-          {Object.entries(configs).map(([countryCode, { name }]) => {
-            return (
-              <Option key={countryCode} value={countryCode}>
-                {name}
-              </Option>
-            );
-          })}
+          {Object.entries(configs).map(([countryCode, { name }]) => (
+            <option key={countryCode} value={countryCode}>
+              {name}
+            </option>
+          ))}
         </Styled.CountrySelector>
         <Styled.FillButton
-          type="primary"
+          type="button"
           onClick={() => {
             onSubmit();
-            setFields(configs[country].generate(country));
+            regenerate(country);
           }}
         >
-          Fill & Generate
+          Fill &amp; Generate
         </Styled.FillButton>
       </Styled.ControlPanel>
     </div>

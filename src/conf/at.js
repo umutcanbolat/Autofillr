@@ -1,7 +1,7 @@
-import { getName, getEmail, getDateOfBirth } from '../utils/faker';
+import { getName, getEmail, getDateOfBirth } from '../utils/person';
 import { getFormattedDate, getRandomDigits } from '../utils/utils';
 
-function generate() {
+export function generate() {
   const { firstName, familyName } = getName();
 
   return {
@@ -48,8 +48,3 @@ function generate() {
     },
   };
 }
-
-export default {
-  name: 'Austria',
-  generate,
-};

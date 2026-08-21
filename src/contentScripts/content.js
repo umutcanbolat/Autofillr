@@ -3,7 +3,7 @@ let filledInputs = new Set();
 const clearFilledInputs = () => {
   filledInputs.forEach((target) => {
     target.dispatchEvent(new Event('focus', { bubbles: true }));
-    // eslint-disable-next-line no-param-reassign
+
     target.value = '';
     target.dispatchEvent(new Event('input', { bubbles: true }));
   });
@@ -13,7 +13,7 @@ const clearFilledInputs = () => {
 
 const setInput = (target, value) => {
   target.dispatchEvent(new Event('focus', { bubbles: true }));
-  // eslint-disable-next-line no-param-reassign
+
   target.value = value;
   target.dispatchEvent(new Event('input', { bubbles: true }));
   target.dispatchEvent(new Event('blur', { bubbles: true }));
@@ -25,14 +25,13 @@ const fillAvailableFields = (request, _sender, sendResponse) => {
   clearFilledInputs();
 
   Object.values(request).forEach(({ value, autocomplete }) => {
-    try {
-      const target = document.querySelectorAll(`input[autocomplete*='${autocomplete}']`)[0];
-      // set the input
-      setInput(target, value);
-      filledInputs.add(target);
-    } catch (e) {
-      // let's pretend like nothing has happened
-    }
+    // A substring match, because the attribute may carry a section or address
+    // type in front of the field name, e.g. `autocomplete="shipping tel"`.
+    const target = document.querySelector(`input[autocomplete*='${autocomplete}']`);
+    if (!target) return;
+
+    setInput(target, value);
+    filledInputs.add(target);
   });
 
   sendResponse('Autofillr successfully filled the form.');

@@ -1,9 +1,8 @@
 import React, { useReducer, useCallback } from 'react';
-import { Divider } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { Header, Details, ControlPanel } from './components';
 import { Light } from './themes';
-import './App.css';
+import * as Styled from './styles';
 
 const formReducer = (state, { action, formData }) => {
   switch (action) {
@@ -24,39 +23,34 @@ const formReducer = (state, { action, formData }) => {
 function App() {
   const [formData, dispatch] = useReducer(formReducer, {});
 
-  const fill = useCallback(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs
-        .sendMessage(tabs[0].id, formData)
-        .then((response) => {
-          // eslint-disable-next-line no-console
-          console.log(response);
-        })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.error(error);
-        });
-    });
+  const setFields = useCallback((data) => {
+    dispatch({ action: 'set', formData: data });
+  }, []);
+
+  const addFields = useCallback((data) => {
+    dispatch({ action: 'add', formData: data });
+  }, []);
+
+  const fill = useCallback(async () => {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tab) return;
+
+    try {
+      // The content script is not injected into restricted pages (the web store,
+      // chrome:// URLs, ...), in which case there is simply no receiver.
+      await chrome.tabs.sendMessage(tab.id, formData);
+    } catch (error) {
+      console.error(error);
+    }
   }, [formData]);
 
   return (
     <ThemeProvider theme={Light}>
       <Header />
-      <Divider />
-      <Details
-        fields={formData}
-        onChange={(data) => {
-          dispatch({ action: 'add', formData: data });
-        }}
-        onSubmit={fill}
-      />
-      <Divider />
-      <ControlPanel
-        setFields={(data) => {
-          dispatch({ action: 'set', formData: data });
-        }}
-        onSubmit={fill}
-      />
+      <Styled.Divider />
+      <Details fields={formData} onChange={addFields} onSubmit={fill} />
+      <Styled.Divider />
+      <ControlPanel setFields={setFields} onSubmit={fill} />
     </ThemeProvider>
   );
 }

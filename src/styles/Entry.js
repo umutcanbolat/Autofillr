@@ -5,7 +5,7 @@ export const Entry = styled.div`
   flex-direction: column;
 `;
 
-export const Label = styled.span`
+export const Label = styled.label`
   white-space: nowrap;
   color: ${(props) => props.theme.primaryColor};
   font-weight: bold;

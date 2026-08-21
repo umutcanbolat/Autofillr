@@ -3,12 +3,12 @@ import * as Styled from '../styles';
 
 const handleFocus = (event) => event.target.select();
 
-export default function Info({ text, onChange, onSubmit }) {
+export default function Info({ id, text, onChange, onSubmit }) {
   const onChangeHandler = ({ target: { value } }) => {
     onChange(value);
   };
 
-  const onKeyPress = (e) => {
+  const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       onSubmit();
     }
@@ -16,11 +16,12 @@ export default function Info({ text, onChange, onSubmit }) {
 
   return (
     <Styled.Input
+      id={id}
       type="text"
       onFocus={handleFocus}
       value={text}
       onChange={onChangeHandler}
-      onKeyDown={onKeyPress}
+      onKeyDown={onKeyDown}
     />
   );
 }

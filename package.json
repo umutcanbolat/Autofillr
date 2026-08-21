@@ -2,84 +2,68 @@
   "name": "autofillr",
   "version": "1.2.2",
   "private": true,
+  "type": "module",
   "description": "Automatically fill registration forms with consistently generated random data.",
   "repository": "https://github.com/umutcanbolat/autofillr.git",
   "license": "GPL-3.0-or-later",
   "author": "umutcanbolat <hello@umutcanbolat.com>",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm-run-all clean build:ui copyContentScripts",
-    "build:ui": "react-scripts build",
-    "build:ui:watch": "cra-build-watch",
-    "commit": "git-cz",
-    "copyContentScripts": "cpy src/contentScripts/* build",
-    "copyContentScripts:watch": "chokidar src/contentScripts -c \"yarn copyContentScripts\" --initial",
-    "eject": "react-scripts eject",
-    "lint": "eslint --ext .js,.jsx src/",
-    "lint:fix": "eslint --ext .js,.jsx src/ --fix",
-    "start": "npm-run-all -p build:ui:watch copyContentScripts:watch",
-    "start:ui": "react-scripts start",
-    "test": "react-scripts test",
-    "ci:release": "release-it --ci",
-    "ci:release:dry": "yarn ci:release --dry-run",
-    "clean": "rimraf dist build"
+  "engines": {
+    "node": ">=24"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  "scripts": {
+    "clean": "rimraf build dist",
+    "build": "npm-run-all clean build:popup build:content",
+    "build:popup": "vite build",
+    "build:content": "vite build --config vite.config.content.js",
+    "start": "npm-run-all clean --parallel watch:popup watch:content",
+    "watch:popup": "vite build --watch",
+    "watch:content": "vite build --config vite.config.content.js --watch",
+    "commit": "cz",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ci:release": "release-it --ci",
+    "ci:release:dry": "npm run ci:release -- --dry-run"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "antd": "^4.6.1",
-    "codice-fiscale-js": "^2.3.7",
-    "faker": "^5.1.0",
+    "@fontsource/paytone-one": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
+    "codice-fiscale-js": "^2.4.0",
     "personal-number-generator": "^1.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "styled-components": "^5.2.0"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "styled-components": "^6.5.3"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.11.5",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@release-it/bumper": "^2.0.0",
-    "@release-it/conventional-changelog": "^2.0.0",
-    "chokidar-cli": "^2.1.0",
-    "cpy-cli": "^3.1.1",
-    "cra-build-watch": "^3.2.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^24.0.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.6",
-    "git-cz": "^4.7.1",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.3.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.1",
-    "release-it": "^14.4.1",
-    "rimraf": "^3.0.2"
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@eslint/js": "^9.39.0",
+    "@release-it/bumper": "^8.0.0",
+    "@release-it/conventional-changelog": "^12.0.0",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^6.1.0",
+    "commitizen": "^4.3.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.39.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.11.0",
+    "jsdom": "^30.0.1",
+    "npm-run-all2": "^9.0.3",
+    "prettier": "^3.9.6",
+    "release-it": "^21.0.2",
+    "rimraf": "^6.1.3",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   }
 }

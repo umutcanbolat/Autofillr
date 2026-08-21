@@ -1,8 +1,8 @@
-import CodiceFiscale from 'codice-fiscale-js';
-import { getName, getEmail, getDateOfBirth } from '../utils/faker';
+import { CodiceFiscale } from 'codice-fiscale-js';
+import { getName, getEmail, getDateOfBirth } from '../utils/person';
 import { getFormattedDate, getRandomDigits } from '../utils/utils';
 
-function generate() {
+export function generate() {
   const { firstName, familyName, genderCode } = getName();
   const dateOfBirth = getDateOfBirth();
 
@@ -70,8 +70,3 @@ function generate() {
     },
   };
 }
-
-export default {
-  name: 'Italy',
-  generate,
-};

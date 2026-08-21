@@ -9,7 +9,7 @@ rm -rf $DES
 mkdir -p $DES
 
 pushd build > /dev/null
-zip -rq ../$PKG_NAME *
+zip -rq ../$PKG_NAME * -x '*.map'
 popd > /dev/null
 mv $PKG_NAME $DES
 
