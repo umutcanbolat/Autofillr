@@ -1,15 +1,22 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  border: none;
-  outline: none;
-  padding: 0.1rem 0;
-  font-size: medium;
-  padding-bottom: 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+
+  &:hover {
+    background: ${(props) => props.theme.fieldHover};
+  }
 
   &:focus {
-    border: none;
+    border-color: ${(props) => props.theme.primaryColor};
+    outline: none;
+    background: ${(props) => props.theme.field};
   }
 `;
-
-export default Input;

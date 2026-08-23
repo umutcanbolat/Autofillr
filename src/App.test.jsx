@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from './App';
+import { Dark, Light } from './themes';
 
 const sendMessage = vi.fn().mockResolvedValue(undefined);
 
@@ -41,5 +42,31 @@ describe('App', () => {
       1,
       expect.objectContaining({ firstName: expect.any(Object) }),
     );
+  });
+
+  // Cycles a full loop, so it leaves the module-scope store back on 'system'.
+  it('cycles the theme preference and persists it', async () => {
+    const user = (await import('@testing-library/user-event')).default.setup();
+    render(<App />);
+
+    const toggle = screen.getByRole('button', { name: /theme/i });
+    expect(toggle).toHaveAccessibleName(/follow the browser/i);
+
+    await user.click(toggle);
+    expect(localStorage.getItem('colorScheme')).toBe('light');
+    expect(document.documentElement.style.colorScheme).toBe('light');
+    expect(toggle).toHaveAccessibleName(/theme: light/i);
+
+    await user.click(toggle);
+    expect(localStorage.getItem('colorScheme')).toBe('dark');
+    expect(document.documentElement.style.colorScheme).toBe('dark');
+
+    // Regression: the components switched while the canvas stayed behind.
+    expect(document.documentElement).toHaveStyle({ backgroundColor: Dark.background });
+
+    await user.click(toggle);
+    expect(localStorage.getItem('colorScheme')).toBeNull();
+    expect(document.documentElement.style.colorScheme).toBe('');
+    expect(document.documentElement).toHaveStyle({ backgroundColor: Light.background });
   });
 });

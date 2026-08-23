@@ -1,7 +1,7 @@
 import React, { useReducer, useCallback } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Header, Details, ControlPanel } from './components';
-import { Light } from './themes';
+import { Dark, Light, useColorScheme } from './themes';
 import * as Styled from './styles';
 
 const formReducer = (state, { action, formData }) => {
@@ -22,6 +22,7 @@ const formReducer = (state, { action, formData }) => {
 
 function App() {
   const [formData, dispatch] = useReducer(formReducer, {});
+  const { scheme } = useColorScheme();
 
   const setFields = useCallback((data) => {
     dispatch({ action: 'set', formData: data });
@@ -45,7 +46,8 @@ function App() {
   }, [formData]);
 
   return (
-    <ThemeProvider theme={Light}>
+    <ThemeProvider theme={scheme === 'dark' ? Dark : Light}>
+      <Styled.GlobalStyle />
       <Header />
       <Styled.Divider />
       <Details fields={formData} onChange={addFields} onSubmit={fill} />

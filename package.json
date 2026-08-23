@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "@fontsource/paytone-one": "^5.3.0",
-    "@fontsource/poppins": "^5.3.0",
     "codice-fiscale-js": "^2.4.0",
     "personal-number-generator": "^1.0.0",
     "react": "^19.2.0",

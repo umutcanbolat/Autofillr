@@ -2,46 +2,54 @@ import styled from 'styled-components';
 
 export const ControlPanel = styled.div`
   display: flex;
+  gap: 8px;
   align-items: center;
+  padding: 10px 12px;
+  background: ${(props) => props.theme.surface};
 `;
 
 export const CountryLabel = styled.label`
-  &::after {
-    content: ':';
-    margin: 0 0.5em 0 0.125em;
-  }
+  color: ${(props) => props.theme.textMuted};
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 `;
 
 export const CountrySelector = styled.select`
-  min-width: 7rem;
-  height: 24px;
-  padding: 0 0.5rem;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
-  background: #fff;
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid ${(props) => props.theme.border};
+  border-radius: 4px;
+  background: ${(props) => props.theme.field};
   color: inherit;
   font: inherit;
+  font-size: 13px;
   cursor: pointer;
 
-  &:hover,
-  &:focus {
-    border-color: ${(props) => props.theme.primaryLighter};
+  &:hover {
+    border-color: ${(props) => props.theme.textMuted};
   }
 
-  &:focus {
+  &:focus-visible {
+    border-color: ${(props) => props.theme.primaryColor};
     outline: none;
+    border-width: 2px;
   }
 `;
 
 export const FillButton = styled.button`
+  height: 30px;
   margin-left: auto;
-  padding: 0.3rem 1rem;
+  padding: 0 12px;
   border: 1px solid ${(props) => props.theme.primaryColor};
-  border-radius: 2px;
+  border-radius: 4px;
   background: ${(props) => props.theme.primaryColor};
   color: #fff;
   font: inherit;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.1s,
@@ -49,12 +57,13 @@ export const FillButton = styled.button`
 
   &:hover,
   &:focus-visible {
-    background: ${(props) => props.theme.primaryLighter};
-    border-color: ${(props) => props.theme.primaryLighter};
+    outline: none;
+    background: ${(props) => props.theme.primaryHover};
+    border-color: ${(props) => props.theme.primaryHover};
   }
 
   &:active {
-    background: ${(props) => props.theme.primaryDarker};
-    border-color: ${(props) => props.theme.primaryDarker};
+    background: ${(props) => props.theme.primaryActive};
+    border-color: ${(props) => props.theme.primaryActive};
   }
 `;

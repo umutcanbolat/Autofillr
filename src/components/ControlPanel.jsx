@@ -32,32 +32,30 @@ export default function ControlPanel({ setFields, onSubmit }) {
   }, [country, setFields]);
 
   return (
-    <div className="container">
-      <Styled.ControlPanel>
-        <Styled.CountryLabel htmlFor={selectId}>Country</Styled.CountryLabel>
-        <Styled.CountrySelector
-          id={selectId}
-          value={country}
-          onChange={(event) => {
-            setCountry(event.target.value);
-          }}
-        >
-          {Object.entries(configs).map(([countryCode, { name }]) => (
-            <option key={countryCode} value={countryCode}>
-              {name}
-            </option>
-          ))}
-        </Styled.CountrySelector>
-        <Styled.FillButton
-          type="button"
-          onClick={() => {
-            onSubmit();
-            regenerate(country);
-          }}
-        >
-          Fill &amp; Generate
-        </Styled.FillButton>
-      </Styled.ControlPanel>
-    </div>
+    <Styled.ControlPanel>
+      <Styled.CountryLabel htmlFor={selectId}>Country</Styled.CountryLabel>
+      <Styled.CountrySelector
+        id={selectId}
+        value={country}
+        onChange={(event) => {
+          setCountry(event.target.value);
+        }}
+      >
+        {Object.entries(configs).map(([countryCode, { name }]) => (
+          <option key={countryCode} value={countryCode}>
+            {name}
+          </option>
+        ))}
+      </Styled.CountrySelector>
+      <Styled.FillButton
+        type="button"
+        onClick={() => {
+          onSubmit();
+          regenerate(country);
+        }}
+      >
+        Fill &amp; Generate
+      </Styled.FillButton>
+    </Styled.ControlPanel>
   );
 }
