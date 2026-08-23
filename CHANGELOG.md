@@ -1,5 +1,11 @@
 # Changelog
 
+# [1.3.0](https://github.com/umutcanbolat/Autofillr/compare/v1.2.3...v1.3.0) (2026-08-23)
+
+### Features
+
+* copact design + dark theme ([cc88ed0](https://github.com/umutcanbolat/Autofillr/commit/cc88ed08ab9f0b955b4ff7b279d590cbdce03f7e))
+
 ## [1.2.3](https://github.com/umutcanbolat/Autofillr/compare/v1.2.2...v1.2.3) (2026-08-21)
 
 ### Bug Fixes
