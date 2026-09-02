@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Autofillr — Fill Test Forms With Consistent Data",
   "description": "Fill test forms in one click with random data that stays consistent: name, email, national ID, address and phone all agree.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "action": {
     "default_popup": "index.html",
     "default_icon": {
@@ -12,8 +12,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "all_frames": true
     }
   ],

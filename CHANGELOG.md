@@ -1,5 +1,15 @@
 # Changelog
 
+# [1.4.0](https://github.com/umutcanbolat/Autofillr/compare/v1.3.0...v1.4.0) (2026-09-02)
+
+### Bug Fixes
+
+* update Chrome Web Store badge link in README ([a41890f](https://github.com/umutcanbolat/Autofillr/commit/a41890fd1543734b53adb78e73fec43842b0cfba))
+
+### Features
+
+* support additional autofill field types ([b6f10da](https://github.com/umutcanbolat/Autofillr/commit/b6f10da77463928b456df665f5519aa42361ae11))
+
 # [1.3.0](https://github.com/umutcanbolat/Autofillr/compare/v1.2.3...v1.3.0) (2026-08-23)
 
 ### Features
