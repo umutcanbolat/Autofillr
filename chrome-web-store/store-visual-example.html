@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autofillr — Fill Test Forms In One Click</title>
+    <link rel="stylesheet" href="./store-visual-base.css" />
+    <style>
+      /* The form sits in the left half of the page so the popup, which floats
+         over the right half, never covers the values it just wrote. */
+      .form-column {
+        display: grid;
+        gap: 5%;
+        width: 40%;
+      }
+
+      /* A submit button anchors the bottom of the page; without it the form
+         floats and the browser frame reads half-empty. */
+      .form-submit {
+        justify-self: start;
+        margin-top: 3%;
+        padding: clamp(6px, 0.85vw, 11px) clamp(12px, 1.6vw, 20px);
+        border-radius: 5px;
+        background: #24262a;
+        color: #fff;
+        font-size: clamp(7px, 0.78vw, 10px);
+        font-weight: 750;
+      }
+
+      .form-field label {
+        display: block;
+        margin-bottom: 5px;
+        color: #70757d;
+        font-size: clamp(7px, 0.78vw, 10px);
+        font-weight: 700;
+      }
+
+      .form-field .field-value {
+        height: clamp(24px, 2.9vw, 36px);
+        padding: 0 9px;
+        border-color: #8bd2a8;
+        background: #f4fbf6;
+        font-size: clamp(8px, 0.88vw, 12px);
+        line-height: clamp(24px, 2.9vw, 36px);
+        box-shadow: inset 3px 0 #2e9e5b;
+      }
+
+      .popup {
+        right: 2.1%;
+        width: 30%;
+      }
+
+      .popup-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 4%;
+      }
+
+      .popup-field {
+        min-width: 0;
+      }
+
+      .popup-field.wide {
+        grid-column: 1 / -1;
+      }
+
+      .popup-field .field-label {
+        margin: 0 0 3px 5px;
+      }
+
+      .popup-field .field-value {
+        padding: 5px 7px;
+        font-size: clamp(7px, 0.78vw, 10px);
+      }
+
+      .popup-controls {
+        padding: 3.5% 4%;
+      }
+
+      .country-select,
+      .fill-button {
+        padding: 7px 9px;
+        font-size: clamp(7px, 0.74vw, 10px);
+      }
+
+      /* Popup -> form. The whole curve sits in the clear band below the popup:
+         tucking the tail under the card read as a clipping accident, because the
+         cut fell on the card's own bottom edge. */
+      .arrow {
+        position: absolute;
+        z-index: 5;
+        top: 64.5%;
+        left: 64.5%;
+        width: 15%;
+        height: auto;
+        transform: rotate(115deg);
+        transform-origin: center;
+        filter: drop-shadow(0 4px 5px rgb(0 0 0 / 16%));
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard" aria-label="Autofillr fills a registration form in one click">
+      <div class="brand">
+        <img src="../public/Autofillr-512.png" alt="" />
+        <span>Autofillr.</span>
+      </div>
+
+      <section class="copy">
+        <h1>Fill Test Forms<br /><span class="accent">In One Click</span></h1>
+        <p class="lede">Realistic test data that passes validation.</p>
+        <div class="proof">
+          <i></i><span>5 countries</span><i></i><span>Generated locally</span><i></i
+          ><span>No account</span>
+        </div>
+      </section>
+
+      <section class="browser" aria-label="Registration form filled by Autofillr">
+        <div class="browser-bar">
+          <span class="traffic"><i></i><i></i><i></i></span>
+          <span class="address-bar"></span>
+        </div>
+        <div class="browser-page">
+          <div class="page-kicker">Registration</div>
+          <h2>Create your account</h2>
+          <div class="form-column">
+            <div class="form-field">
+              <label>First name</label>
+              <div class="field-value">Giulia</div>
+            </div>
+            <div class="form-field">
+              <label>Email</label>
+              <div class="field-value">giulia.romano@example.com</div>
+            </div>
+            <div class="form-field">
+              <label>Fiscal code</label>
+              <div class="field-value">RMNGLI92D54H501X</div>
+            </div>
+            <div class="form-field">
+              <label>Address</label>
+              <div class="field-value">Via Alessandro Volta 28</div>
+            </div>
+            <div class="form-field">
+              <label>Postal code</label>
+              <div class="field-value">00186</div>
+            </div>
+            <div class="form-field">
+              <label>Date of birth</label>
+              <div class="field-value">14/04/1992</div>
+            </div>
+            <span class="form-submit">Create account</span>
+          </div>
+        </div>
+      </section>
+
+      <img class="arrow" src="./curved-arrow.svg" alt="" />
+
+      <aside class="popup" aria-label="Autofillr extension popup">
+        <div class="popup-head">
+          <div class="popup-title">
+            <img src="../public/Autofillr-512.png" alt="" />
+            <span>Autofillr.</span>
+          </div>
+          <div class="popup-actions"><span>◐</span><span>◆</span></div>
+        </div>
+
+        <div class="popup-fields">
+          <div class="popup-field">
+            <span class="field-label">First name</span>
+            <div class="field-value">Giulia</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Family name</span>
+            <div class="field-value">Romano</div>
+          </div>
+          <div class="popup-field wide">
+            <span class="field-label">Email</span>
+            <div class="field-value">giulia.romano@example.com</div>
+          </div>
+          <div class="popup-field wide">
+            <span class="field-label">Fiscal code</span>
+            <div class="field-value">RMNGLI92D54H501X</div>
+          </div>
+          <div class="popup-field wide">
+            <span class="field-label">Address</span>
+            <div class="field-value">Via Alessandro Volta 28</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Postal code</span>
+            <div class="field-value">00186</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">City</span>
+            <div class="field-value">Roma</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Province</span>
+            <div class="field-value">RM</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Date of birth</span>
+            <div class="field-value">14/04/1992</div>
+          </div>
+        </div>
+
+        <div class="popup-controls">
+          <span class="control-label">Country</span>
+          <span class="country-select">Italy⌄</span>
+          <span class="fill-button">Fill &amp; Generate</span>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>

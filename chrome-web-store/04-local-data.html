@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autofillr — Your Test Data Stays Local</title>
+    <link rel="stylesheet" href="./store-visual-base.css" />
+    <style>
+      .browser {
+        top: 9%;
+        height: 80%;
+      }
+
+      .local-page {
+        display: grid;
+        place-items: center;
+        padding: 5%;
+      }
+
+      .local-boundary {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        border: 2px dashed #d9dde0;
+        border-radius: 14px;
+        background:
+          radial-gradient(circle at 50% 48%, rgb(230 0 27 / 8%), transparent 43%), #fbfbfc;
+      }
+
+      .boundary-label {
+        position: absolute;
+        top: 17px;
+        left: 19px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #777c83;
+        font-size: clamp(7px, 0.77vw, 10px);
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .boundary-label i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2e9e5b;
+        box-shadow: 0 0 0 4px rgb(46 158 91 / 12%);
+      }
+
+      .local-popup {
+        width: 74%;
+        overflow: hidden;
+        border: 1px solid #dfe1e5;
+        border-radius: 11px;
+        background: #fff;
+        box-shadow: 0 22px 48px rgb(24 28 32 / 18%);
+      }
+
+      .private-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 4.5%;
+      }
+
+      .private-fields .wide {
+        grid-column: 1 / -1;
+      }
+
+      .private-fields .field-label {
+        margin: 0 0 4px 5px;
+        font-size: clamp(7px, 0.68vw, 9px);
+      }
+
+      .private-fields .field-value {
+        padding: 6px 8px;
+        font-size: clamp(8px, 0.84vw, 11px);
+      }
+
+      .local-controls {
+        padding: 3.5% 4%;
+      }
+
+      .local-controls .country-select,
+      .local-controls .fill-button {
+        padding: 7px 10px;
+        font-size: clamp(8px, 0.82vw, 11px);
+      }
+
+      .local-controls .control-label {
+        font-size: clamp(7px, 0.68vw, 9px);
+      }
+
+      .shield {
+        position: absolute;
+        z-index: 4;
+        top: 11%;
+        right: 5.3%;
+        display: grid;
+        width: clamp(44px, 5.6vw, 72px);
+        height: clamp(44px, 5.6vw, 72px);
+        place-items: center;
+        border: 5px solid #fff;
+        border-radius: 19px;
+        background: #e6001b;
+        box-shadow: 0 16px 32px rgb(36 9 13 / 26%);
+        transform: rotate(3deg);
+      }
+
+      .shield svg {
+        width: 52%;
+        height: 52%;
+      }
+
+      .blocked-request {
+        position: absolute;
+        bottom: -18px;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 13px 8px 9px;
+        border: 1px solid #e4e6e9;
+        border-radius: 999px;
+        background: #fff;
+        color: #5c6169;
+        font-size: clamp(7px, 0.76vw, 10px);
+        font-weight: 750;
+        box-shadow: 0 9px 24px rgb(24 28 32 / 8%);
+        transform: translateX(-50%);
+      }
+
+      .blocked-request b {
+        display: grid;
+        width: 20px;
+        height: 20px;
+        place-items: center;
+        border-radius: 50%;
+        background: #ffe9ec;
+        color: #e6001b;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard" aria-label="Your test data stays local concept">
+      <div class="brand">
+        <img src="../public/Autofillr-512.png" alt="" />
+        <span>Autofillr.</span>
+      </div>
+
+      <section class="copy">
+        <h1>Your Test Data<br /><span class="accent">Stays Local</span></h1>
+        <p class="lede">Everything is generated inside the extension.</p>
+        <div class="proof">
+          <i></i><span>Zero permissions</span><i></i><span>No network requests</span><i></i
+          ><span>No account</span>
+        </div>
+      </section>
+
+      <section class="browser" aria-label="Autofillr running locally in the browser">
+        <div class="browser-bar">
+          <span class="traffic"><i></i><i></i><i></i></span>
+          <span class="address-bar"></span>
+        </div>
+        <div class="browser-page local-page">
+          <div class="local-boundary">
+            <div class="boundary-label"><i></i> This browser</div>
+
+            <article class="local-popup" aria-label="Autofillr extension popup">
+              <div class="popup-head">
+                <div class="popup-title">
+                  <img src="../public/Autofillr-512.png" alt="" />
+                  <span>Autofillr.</span>
+                </div>
+                <div class="popup-actions"><span>◐</span><span>◆</span></div>
+              </div>
+
+              <div class="private-fields">
+                <div>
+                  <span class="field-label">First name</span>
+                  <div class="field-value">Giulia</div>
+                </div>
+                <div>
+                  <span class="field-label">Family name</span>
+                  <div class="field-value">Romano</div>
+                </div>
+                <div class="wide">
+                  <span class="field-label">Email</span>
+                  <div class="field-value">giulia.romano@example.com</div>
+                </div>
+                <div class="wide">
+                  <span class="field-label">Fiscal code</span>
+                  <div class="field-value">RMNGLI92D54H501X</div>
+                </div>
+                <div class="wide">
+                  <span class="field-label">Address</span>
+                  <div class="field-value">Via Alessandro Volta 28</div>
+                </div>
+                <div>
+                  <span class="field-label">Postal code</span>
+                  <div class="field-value">00186</div>
+                </div>
+                <div>
+                  <span class="field-label">City</span>
+                  <div class="field-value">Roma</div>
+                </div>
+                <div>
+                  <span class="field-label">Province</span>
+                  <div class="field-value">RM</div>
+                </div>
+                <div>
+                  <span class="field-label">Date of birth</span>
+                  <div class="field-value">14/04/1992</div>
+                </div>
+              </div>
+
+              <div class="popup-controls local-controls">
+                <span class="control-label">Country</span>
+                <span class="country-select">Italy⌄</span>
+                <span class="fill-button">Fill &amp; Generate</span>
+              </div>
+            </article>
+
+            <div class="blocked-request"><b>⊘</b> Nothing leaves this browser</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="shield" aria-hidden="true">
+        <svg viewBox="0 0 32 36" fill="none">
+          <path d="M16 2 28 7v9c0 8-4.8 14.6-12 18C8.8 30.6 4 24 4 16V7l12-5Z" fill="#fff" />
+          <path
+            d="m10.5 17 3.7 3.7 7.8-8"
+            stroke="#e6001b"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </main>
+  </body>
+</html>

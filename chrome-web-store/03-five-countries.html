@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autofillr — Test Across 5 Countries</title>
+    <link rel="stylesheet" href="./store-visual-base.css" />
+    <style>
+      .popup-halo {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 4%;
+        width: 44%;
+        height: 74%;
+        border-radius: 50%;
+        background: rgb(255 91 112 / 18%);
+        filter: blur(60px);
+        transform: translateY(-50%);
+      }
+
+      /* The open menu hangs below the card, so the card is lifted to keep the
+         whole assembly optically centred. */
+      .popup {
+        top: 38%;
+        right: 4.5%;
+        width: 43%;
+        overflow: visible;
+      }
+
+      .popup-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+        padding: 5% 4.5%;
+        border-radius: 0 0 11px 11px;
+        background: #fff;
+      }
+
+      .popup-field {
+        min-width: 0;
+      }
+
+      .popup-field.wide {
+        grid-column: 1 / -1;
+      }
+
+      .popup-field .field-label {
+        margin: 0 0 4px 5px;
+        font-size: clamp(7px, 0.7vw, 10px);
+      }
+
+      .popup-field .field-value {
+        padding: 7px 9px;
+        font-size: clamp(9px, 0.95vw, 13px);
+      }
+
+      .selector-area {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        padding: 4% 4.5%;
+        border-top: 1px solid #e6e7e9;
+        border-radius: 0 0 11px 11px;
+        background: #f6f7f8;
+      }
+
+      .country-picker {
+        position: relative;
+        min-width: 0;
+      }
+
+      .selected-country {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 11px;
+        border: 2px solid #e6001b;
+        border-radius: 5px;
+        background: #fff;
+        color: #303337;
+        font-size: clamp(9px, 0.92vw, 12px);
+        font-weight: 700;
+      }
+
+      .country-menu {
+        position: absolute;
+        z-index: 6;
+        top: calc(100% + 3px);
+        left: 0;
+        width: 100%;
+        min-width: 180px;
+        overflow: hidden;
+        border: 1px solid #d6d9dc;
+        border-radius: 7px;
+        background: #fff;
+        box-shadow: 0 18px 38px rgb(17 20 24 / 20%);
+      }
+
+      .country-option {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 10px 13px;
+        border-bottom: 1px solid #edf0f2;
+        color: #3d4146;
+        font-size: clamp(9px, 0.92vw, 12px);
+        font-weight: 650;
+      }
+
+      .country-option:last-child {
+        border-bottom: 0;
+      }
+
+      .country-option.active {
+        background: #fff0f2;
+        color: #c90018;
+      }
+
+      .country-option b {
+        display: grid;
+        width: 29px;
+        height: 23px;
+        place-items: center;
+        border-radius: 4px;
+        background: #f0f1f3;
+        font-size: 10px;
+      }
+
+      .country-option.active b {
+        background: #e6001b;
+        color: #fff;
+      }
+
+      .selector-button {
+        padding: 8px 11px;
+        font-size: clamp(9px, 0.9vw, 12px);
+      }
+
+      .control-label {
+        font-size: clamp(7px, 0.72vw, 10px);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard" aria-label="Test across five countries concept">
+      <div class="brand">
+        <img src="../public/Autofillr-512.png" alt="" />
+        <span>Autofillr.</span>
+      </div>
+
+      <section class="copy">
+        <h1>Test Across<br /><span class="accent">5 Countries</span></h1>
+        <p class="lede">Every country brings its own IDs, postcodes and phone formats.</p>
+        <div class="proof">
+          <i></i><span>Switch in one click</span><i></i><span>Nothing to configure</span>
+        </div>
+      </section>
+
+      <div class="popup-halo" aria-hidden="true"></div>
+
+      <aside class="popup" aria-label="Autofillr country selector">
+        <div class="popup-head">
+          <div class="popup-title">
+            <img src="../public/Autofillr-512.png" alt="" />
+            <span>Autofillr.</span>
+          </div>
+          <div class="popup-actions"><span>◐</span><span>◆</span></div>
+        </div>
+
+        <div class="popup-fields">
+          <div class="popup-field">
+            <span class="field-label">First name</span>
+            <div class="field-value">Giulia</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Family name</span>
+            <div class="field-value">Romano</div>
+          </div>
+          <div class="popup-field wide">
+            <span class="field-label">Email</span>
+            <div class="field-value">giulia.romano@example.com</div>
+          </div>
+          <div class="popup-field wide">
+            <span class="field-label">Fiscal code</span>
+            <div class="field-value">RMNGLI92D54H501X</div>
+          </div>
+          <div class="popup-field wide">
+            <span class="field-label">Address</span>
+            <div class="field-value">Via Alessandro Volta 28</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Postal code</span>
+            <div class="field-value">00186</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">City</span>
+            <div class="field-value">Roma</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Province</span>
+            <div class="field-value">RM</div>
+          </div>
+          <div class="popup-field">
+            <span class="field-label">Date of birth</span>
+            <div class="field-value">14/04/1992</div>
+          </div>
+        </div>
+
+        <div class="selector-area">
+          <span class="control-label">Country</span>
+
+          <div class="country-picker">
+            <span class="selected-country">Italy <b>⌃</b></span>
+            <div class="country-menu" aria-label="Available countries">
+              <div class="country-option"><b>SE</b> Sweden</div>
+              <div class="country-option"><b>DE</b> Germany</div>
+              <div class="country-option"><b>AT</b> Austria</div>
+              <div class="country-option"><b>NL</b> Netherlands</div>
+              <div class="country-option active"><b>IT</b> Italy</div>
+            </div>
+          </div>
+
+          <span class="fill-button selector-button">Fill &amp; Generate</span>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
