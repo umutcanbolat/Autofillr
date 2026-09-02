@@ -10,197 +10,7 @@
     />
     <link rel="icon" type="image/png" sizes="32x32" href="./Autofillr-32.png" />
     <link rel="apple-touch-icon" href="./Autofillr-192.png" />
-    <style>
-      /* Mirrors src/themes/Light.js and src/themes/Dark.js so the page reads as
-         part of the extension. Kept as plain custom properties: this is a static
-         page with no build step. */
-      :root {
-        color-scheme: light dark;
-
-        --primary: #e6001b;
-        --background: #ffffff;
-        --text: #1f2023;
-        --text-muted: #70757d;
-        --border: #dfe1e5;
-        --surface: #f6f7f8;
-        --field: #ffffff;
-        --filled-border: #2e9e5b;
-        --filled-background: #f4fbf6;
-        --note-text: #8a6d1f;
-        --note-background: #fff8e1;
-        --note-border: #f0e0a8;
-        --log-background: #14161a;
-        --log-text: #b9f0c8;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --primary: #d6394a;
-          --background: #202124;
-          --text: #e8eaed;
-          --text-muted: #9aa0a6;
-          --border: #3c4043;
-          --surface: #292a2d;
-          --field: #1b1c1e;
-          --filled-border: #4caf72;
-          --filled-background: #1c2a20;
-          --note-text: #e3c46a;
-          --note-background: #2b2718;
-          --note-border: #4a4126;
-          --log-background: #14161a;
-          --log-text: #b9f0c8;
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        font:
-          14px/1.6 system-ui,
-          sans-serif;
-        margin: 0;
-        padding: 28px;
-        background: var(--background);
-        color: var(--text);
-      }
-
-      main {
-        max-width: 680px;
-        margin: 0 auto;
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 4px;
-      }
-
-      header img {
-        width: 32px;
-        height: 32px;
-      }
-
-      h1 {
-        font-size: 20px;
-        margin: 0;
-      }
-
-      p.lede {
-        margin: 0 0 20px;
-        color: var(--text-muted);
-      }
-
-      a {
-        color: var(--primary);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: 220px 1fr;
-        gap: 8px 12px;
-        align-items: center;
-      }
-
-      label {
-        color: var(--text);
-      }
-
-      code {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        padding: 1px 5px;
-        border-radius: 3px;
-        font-size: 12px;
-      }
-
-      input {
-        min-width: 0;
-        padding: 6px 8px;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        background: var(--field);
-        color: var(--text);
-        font: inherit;
-      }
-
-      /* Autofillr writes a value without touching the placeholder, so anything
-         that is no longer showing one has been filled. */
-      input:not([value='']):not(:placeholder-shown) {
-        border-color: var(--filled-border);
-        background: var(--filled-background);
-      }
-
-      .note {
-        color: var(--note-text);
-        background: var(--note-background);
-        border: 1px solid var(--note-border);
-        padding: 2px 6px;
-        border-radius: 3px;
-        font-size: 12px;
-      }
-
-      section {
-        margin-top: 28px;
-      }
-
-      h2 {
-        font-size: 15px;
-        margin: 0 0 8px;
-      }
-
-      iframe {
-        width: 100%;
-        height: 110px;
-        border: 1px dashed var(--border);
-        border-radius: 6px;
-        background: var(--surface);
-      }
-
-      #log {
-        height: 150px;
-        overflow: auto;
-        background: var(--log-background);
-        color: var(--log-text);
-        font:
-          12px/1.5 ui-monospace,
-          monospace;
-        padding: 10px;
-        border-radius: 6px;
-        white-space: pre;
-      }
-
-      button {
-        font: inherit;
-        padding: 5px 12px;
-        border-radius: 5px;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-        cursor: pointer;
-      }
-
-      footer {
-        margin-top: 32px;
-        padding-top: 16px;
-        border-top: 1px solid var(--border);
-        color: var(--text-muted);
-        font-size: 13px;
-      }
-
-      @media (max-width: 560px) {
-        .grid {
-          grid-template-columns: 1fr;
-          gap: 4px;
-        }
-
-        .grid label {
-          margin-top: 8px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <main>
@@ -209,51 +19,55 @@
         <h1>Autofillr test form</h1>
       </header>
       <p class="lede">
-        Open the extension popup and press <strong>Fill &amp; Generate</strong>. Filled inputs turn
+        Open the extension popup and press <strong>Fill &amp; Generate</strong>. Filled fields turn
         green. Don't have it yet?
         <a
-          href="https://chrome.google.com/webstore/detail/autofillr/jcgfleiagjfjlgdpbignhphpdcbjplco"
+          href="https://chromewebstore.google.com/detail/autofillr/jcgfleiagjfjlgdpbignhphpdcbjplco"
           >Get it from the Chrome Web Store</a
         >.
       </p>
 
       <div class="grid">
         <label for="given-name"><code>given-name</code></label>
-        <input id="given-name" type="text" autocomplete="given-name" placeholder="" />
+        <input id="given-name" type="text" autocomplete="given-name" />
 
         <label for="family-name"><code>family-name</code></label>
-        <input id="family-name" type="text" autocomplete="family-name" placeholder="" />
+        <input id="family-name" type="text" autocomplete="family-name" />
 
         <label for="email"><code>email</code></label>
-        <input id="email" type="text" autocomplete="email" placeholder="" />
+        <input id="email" type="text" autocomplete="email" />
 
         <label for="nin"><code>nin</code> <span class="note">SE / IT only</span></label>
-        <input id="nin" type="text" autocomplete="nin" placeholder="" />
+        <input id="nin" type="text" autocomplete="nin" />
 
-        <label for="address-line1"><code>address-line1</code></label>
-        <input id="address-line1" type="text" autocomplete="address-line1" placeholder="" />
+        <label for="address-line1-textarea"><code>address-line1</code> textarea</label>
+        <textarea id="address-line1-textarea" autocomplete="address-line1" rows="2"></textarea>
 
         <label for="postal-code"><code>postal-code</code></label>
-        <input id="postal-code" type="text" autocomplete="postal-code" placeholder="" />
+        <input id="postal-code" type="text" autocomplete="postal-code" />
 
         <label for="address-level2"><code>address-level2</code></label>
-        <input id="address-level2" type="text" autocomplete="address-level2" placeholder="" />
+        <input id="address-level2" type="text" autocomplete="address-level2" />
 
         <label for="address-level1"
           ><code>address-level1</code> <span class="note">IT only</span></label
         >
-        <input id="address-level1" type="text" autocomplete="address-level1" placeholder="" />
+        <select id="address-level1" autocomplete="address-level1">
+          <option value="">Choose...</option>
+          <option value="RM">Roma</option>
+          <option value="MI">Milano</option>
+        </select>
 
         <label for="tel"><code>tel</code></label>
-        <input id="tel" type="text" autocomplete="tel" placeholder="" />
+        <input id="tel" type="text" autocomplete="tel" />
 
         <label for="bday"><code>bday</code> <span class="note">not SE</span></label>
-        <input id="bday" type="text" autocomplete="bday" placeholder="" />
+        <input id="bday" type="text" autocomplete="bday" />
 
         <label for="organization"
           ><code>organization</code> <span class="note">must stay empty</span></label
         >
-        <input id="organization" type="text" autocomplete="organization" placeholder="" />
+        <input id="organization" type="text" autocomplete="organization" />
       </div>
 
       <section>
@@ -273,36 +87,6 @@
       </footer>
     </main>
 
-    <script>
-      const log = document.getElementById('log');
-      let lines = [];
-      const write = (msg) => {
-        lines.push(msg);
-        log.textContent = lines.slice(-200).join('\n');
-        log.scrollTop = log.scrollHeight;
-      };
-      document.getElementById('clear').onclick = () => {
-        lines = [];
-        log.textContent = 'cleared';
-      };
-
-      for (const input of document.querySelectorAll('input')) {
-        const name = input.getAttribute('autocomplete');
-        for (const type of ['focus', 'input', 'blur']) {
-          input.addEventListener(type, () => {
-            write(
-              `${type.padEnd(5)} ${name.padEnd(16)} ${
-                type === 'input' ? JSON.stringify(input.value) : ''
-              }`,
-            );
-          });
-        }
-      }
-      write(
-        'listening for focus / input / blur on ' +
-          document.querySelectorAll('input').length +
-          ' inputs',
-      );
-    </script>
+    <script src="./log.js"></script>
   </body>
 </html>

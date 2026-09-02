@@ -4,72 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Autofillr test form — nested frame</title>
-    <style>
-      /* Same tokens as the parent page; an iframe gets no inherited custom
-         properties, so they are repeated rather than shared. */
-      :root {
-        color-scheme: light dark;
-
-        --text: #1f2023;
-        --text-muted: #70757d;
-        --border: #dfe1e5;
-        --surface: #f6f7f8;
-        --field: #ffffff;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --text: #e8eaed;
-          --text-muted: #9aa0a6;
-          --border: #3c4043;
-          --surface: #292a2d;
-          --field: #1b1c1e;
-        }
-      }
-
-      body {
-        font:
-          13px/1.5 system-ui,
-          sans-serif;
-        margin: 0;
-        padding: 12px;
-        background: var(--surface);
-        color: var(--text);
-      }
-
-      .row {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        margin-bottom: 8px;
-      }
-
-      label {
-        width: 190px;
-        color: var(--text-muted);
-      }
-
-      code {
-        background: var(--field);
-        border: 1px solid var(--border);
-        padding: 1px 4px;
-        border-radius: 3px;
-        font-size: 11px;
-      }
-
-      input {
-        flex: 1;
-        min-width: 0;
-        padding: 5px 7px;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        background: var(--field);
-        color: var(--text);
-        font: inherit;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
+  <body class="frame">
     <div class="row">
       <label for="shipping-given-name"><code>shipping given-name</code></label>
       <input id="shipping-given-name" type="text" autocomplete="shipping given-name" />

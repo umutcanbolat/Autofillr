@@ -1,0 +1,220 @@
+/* Mirrors src/themes/Light.js and src/themes/Dark.js so the pages read as part
+   of the extension. Plain custom properties: this is a static site, no build. */
+:root {
+  color-scheme: light dark;
+
+  --primary: #e6001b;
+  --background: #ffffff;
+  --text: #1f2023;
+  --text-muted: #70757d;
+  --border: #dfe1e5;
+  --surface: #f6f7f8;
+  --field: #ffffff;
+  --filled-border: #2e9e5b;
+  --filled-background: #f4fbf6;
+  --note-text: #8a6d1f;
+  --note-background: #fff8e1;
+  --note-border: #f0e0a8;
+  --log-background: #14161a;
+  --log-text: #b9f0c8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #d6394a;
+    --background: #202124;
+    --text: #e8eaed;
+    --text-muted: #9aa0a6;
+    --border: #3c4043;
+    --surface: #292a2d;
+    --field: #1b1c1e;
+    --filled-border: #4caf72;
+    --filled-background: #1c2a20;
+    --note-text: #e3c46a;
+    --note-background: #2b2718;
+    --note-border: #4a4126;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font:
+    14px/1.6 system-ui,
+    sans-serif;
+  margin: 0;
+  padding: 28px;
+  background: var(--background);
+  color: var(--text);
+}
+
+/* The nested form: its own document, so it repeats nothing but its ground. */
+body.frame {
+  padding: 12px;
+  background: var(--surface);
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+header img {
+  width: 32px;
+  height: 32px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+p.lede {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--primary);
+}
+
+nav {
+  margin: 0 0 20px;
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.row label {
+  width: 190px;
+  color: var(--text-muted);
+}
+
+label {
+  color: var(--text);
+}
+
+code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+input,
+textarea,
+select {
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--field);
+  color: var(--text);
+  font: inherit;
+}
+
+.row input {
+  flex: 1;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Set from log.js on every input/change, so it covers dropdowns and text areas
+   as well -- and does not mistake a field that has no placeholder for a filled
+   one, which the old :placeholder-shown rule did. */
+.filled {
+  border-color: var(--filled-border);
+  background: var(--filled-background);
+}
+
+.note {
+  color: var(--note-text);
+  background: var(--note-background);
+  border: 1px solid var(--note-border);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+section {
+  margin-top: 28px;
+}
+
+iframe {
+  width: 100%;
+  height: 110px;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+#log {
+  height: 150px;
+  overflow: auto;
+  background: var(--log-background);
+  color: var(--log-text);
+  font:
+    12px/1.5 ui-monospace,
+    monospace;
+  padding: 10px;
+  border-radius: 6px;
+  white-space: pre;
+}
+
+button {
+  font: inherit;
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .grid label {
+    margin-top: 8px;
+  }
+}

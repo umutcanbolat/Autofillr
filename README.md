@@ -9,7 +9,7 @@ A browser extension that fills registration forms with random but _consistent_ d
 
 The point is to take the pain out of testing forms with strict validation, which otherwise means hand-crafting valid data several times a day.
 
-Everything is generated locally: no requests to any remote service. Fields are matched via [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
+Everything is generated locally: no requests to any remote service. Fields are matched via [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete). Text fields, text areas, and matching dropdown options are filled.
 
 [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/autofillr/jcgfleiagjfjlgdpbignhphpdcbjplco), then try it on the [test form](https://umutcanbolat.github.io/Autofillr/).
 
