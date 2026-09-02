@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autofillr — Marquee promo tile (1400×560)</title>
+    <link rel="stylesheet" href="./store-visual-base.css" />
+    <style>
+      /* Store homepage banner. Rendered at exactly 1400×560; sized in cqw off the
+         artboard so the composition holds if the canvas ever changes. */
+      body {
+        min-height: auto;
+        padding: 0;
+        background: #111216;
+      }
+
+      .artboard {
+        container-type: size;
+        width: 1400px;
+        height: 560px;
+        aspect-ratio: auto;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .artboard::before {
+        left: -6%;
+        top: 46%;
+        width: 62%;
+        height: 34%;
+      }
+
+      .artboard::after {
+        left: 1%;
+        top: 58%;
+        width: 62%;
+        height: 34%;
+      }
+
+      /* Oversized mark bleeding off the right edge: branding, not texture. */
+      .watermark {
+        position: absolute;
+        z-index: 0;
+        top: 50%;
+        right: -13cqw;
+        width: 47cqw;
+        border-radius: 11cqw;
+        opacity: 0.1;
+        transform: translateY(-50%) rotate(-10deg);
+      }
+
+      .tile {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 4.3cqw;
+      }
+
+      .tile-brand {
+        display: flex;
+        align-items: center;
+        gap: 1cqw;
+        margin-bottom: 2.6cqw;
+        font-size: 1.55cqw;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .tile-brand img {
+        width: 3.4cqw;
+        height: 3.4cqw;
+        border-radius: 0.9cqw;
+        box-shadow: 0 0.6cqw 1.8cqw rgb(230 0 27 / 40%);
+      }
+
+      .tile h1 {
+        margin: 0;
+        font-size: 5.7cqw;
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+      }
+
+      .tile .accent {
+        position: relative;
+        display: inline-block;
+        color: #ff5b70;
+      }
+
+      .tile .accent::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.17em;
+        height: 0.055em;
+        border-radius: 999px;
+        background: #ff5b70;
+        transform: rotate(-1.5deg);
+      }
+
+      .tile .lede {
+        max-width: 58cqw;
+        margin: 3.4cqw 0 0;
+        color: rgb(255 255 255 / 76%);
+        font-size: 1.62cqw;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard">
+      <img class="watermark" src="../public/Autofillr-512.png" alt="" />
+      <div class="tile">
+        <div class="tile-brand">
+          <img src="../public/Autofillr-512.png" alt="" />
+          <span>Autofillr.</span>
+        </div>
+        <h1>Fill Test Forms <span class="accent">In One Click</span></h1>
+        <p class="lede">Random test data that passes validation, generated on your machine.</p>
+      </div>
+    </main>
+  </body>
+</html>

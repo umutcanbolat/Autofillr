@@ -5,15 +5,15 @@
 [![License](https://img.shields.io/github/license/umutcanbolat/Autofillr?logoColor=white&logo=gnu&style=flat-square)](LICENSE)
 [![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-fe5196.svg?style=flat-square)](https://conventionalcommits.org)
 
-A browser extension that fills registration forms with random but _consistent_ data — the generated fields stay valid against each other. Where a country encodes the date of birth in its national identification number, for instance, Autofillr makes the two agree.
+A browser extension that fills registration forms with random but _consistent_ data — the generated fields stay valid against each other. The email comes from the name, the national identification number encodes the date of birth, and the postcode, city and phone area code all belong to the same place.
 
 The point is to take the pain out of testing forms with strict validation, which otherwise means hand-crafting valid data several times a day.
 
-Everything is generated locally: no requests to any remote service. Fields are matched via [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete). Text fields, text areas, and matching dropdown options are filled.
+Everything is generated inside the extension: no requests to any remote service, no account, nothing collected. Fields are matched via [the HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete). Text fields, text areas, and matching dropdown options are filled.
 
 [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/autofillr/jcgfleiagjfjlgdpbignhphpdcbjplco), then try it on the [test form](https://umutcanbolat.github.io/Autofillr/).
 
-<img src="https://user-images.githubusercontent.com/10065235/109368480-8adcfd00-7899-11eb-85a9-293b67c69688.gif" alt="Autofilr Gif" width="720"/>
+<img src="chrome-web-store/img/1.png" alt="Autofillr filling a registration form with consistent Italian test data" width="720" />
 
 ## Development
 

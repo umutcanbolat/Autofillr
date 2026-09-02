@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autofillr — Small promo tile (440×280)</title>
+    <link rel="stylesheet" href="./store-visual-base.css" />
+    <style>
+      /* Store merchandising tile. Rendered at exactly 440×280, so the artboard is
+         a fixed-size container and everything inside is sized in cqw. */
+      body {
+        min-height: auto;
+        padding: 0;
+        background: #111216;
+      }
+
+      .artboard {
+        container-type: size;
+        width: 440px;
+        height: 280px;
+        aspect-ratio: auto;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .artboard::before {
+        left: -10%;
+        top: 50%;
+        width: 88%;
+        height: 30%;
+      }
+
+      .artboard::after {
+        left: 2%;
+        top: 61%;
+        width: 88%;
+        height: 30%;
+      }
+
+      .tile {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 7.6cqw 7.6cqw 10.6cqw;
+      }
+
+      .tile-brand {
+        display: flex;
+        align-items: center;
+        gap: 2.6cqw;
+        font-size: 4.3cqw;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .tile-brand img {
+        width: 10cqw;
+        height: 10cqw;
+        border-radius: 2.6cqw;
+        box-shadow: 0 1.8cqw 5cqw rgb(230 0 27 / 40%);
+      }
+
+      .tile h1 {
+        margin: 0;
+        font-size: 10.4cqw;
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+      }
+
+      .tile .accent {
+        position: relative;
+        display: inline-block;
+        color: #ff5b70;
+      }
+
+      .tile .accent::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.17em;
+        height: 0.055em;
+        border-radius: 999px;
+        background: #ff5b70;
+        transform: rotate(-1.5deg);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard">
+      <div class="tile">
+        <div class="tile-brand">
+          <img src="../public/Autofillr-512.png" alt="" />
+          <span>Autofillr.</span>
+        </div>
+        <h1>Fill Test Forms<br /><span class="accent">In One Click</span></h1>
+      </div>
+    </main>
+  </body>
+</html>
